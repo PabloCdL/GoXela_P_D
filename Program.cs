@@ -10,7 +10,7 @@ namespace GoXela_P__D
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine("Prueba de rama-diana");
         }
     }
 }
