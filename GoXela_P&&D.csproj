@@ -51,6 +51,7 @@
     <Compile Include="Paquete.cs" />
     <Compile Include="PaqueteEstandar.cs" />
     <Compile Include="PaqueteFragil.cs" />
+    <Compile Include="PaqueteRefrigerado.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
