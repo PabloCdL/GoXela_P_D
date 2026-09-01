@@ -29,13 +29,22 @@ namespace GoXela_P__D
         public int CantidadLimite
         {
             get { return cantidadLimite; }
-            set { cantidadLimite = value; } // valor especifico
+            set 
+            {
+                if(value < 0 || value > 5)
+                {
+                    Console.WriteLine($"Cantidad no permitida");
+                }else
+                {
+                    cantidadLimite = value;
+                }
+            } // valor especifico
         }
 
-        public ProductoRefrigerado(string codigo, string descripcion, double peso, string direccionOri, string direccionDes, EstadoPaquete estado, int precio, int pase, int cantidadLimite)
+        public PaqueteRefrigerado(string codigo, string descripcion, double peso, string direccionOri, string direccionDes, EstadoPaquete estado, int precio, int pase, int cantidadLimite)
             : base(codigo, descripcion, peso, direccionOri, direccionOri, estado)
         {
-
+            CantidadLimite = cantidadLimite;
         }
     }
 }
