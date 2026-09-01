@@ -47,6 +47,7 @@
     <Compile Include="Bicicleta.cs" />
     <Compile Include="Clientes.cs" />
     <Compile Include="Documento.cs" />
+    <Compile Include="Entregas.cs" />
     <Compile Include="Motocicleta.cs" />
     <Compile Include="Paquete.cs" />
     <Compile Include="PaqueteEstandar.cs" />
