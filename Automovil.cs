@@ -21,7 +21,19 @@ namespace GoXela_P__D
         public string Placa
         {
             get { return placa; }
-            set { placa = value; }
+            set 
+            {
+                if (value.Length < 10 && value != null)
+                {
+                    Console.WriteLine("Placa válida");
+                    placa = value;
+                }
+                else
+                {
+                    Console.WriteLine("Placa inválida");
+                    placa = null;
+                }
+            }
         }
 
 

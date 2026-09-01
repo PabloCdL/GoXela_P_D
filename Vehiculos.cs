@@ -17,7 +17,19 @@ namespace GoXela_P__D
         public string Codigo
         {
             get { return codigo; }
-            set { codigo = value; }
+            set 
+            {
+                if (value.Length < 5 && value != null)
+                {
+                    Console.WriteLine("Código válido");
+                    codigo = value;
+                }
+                else
+                {
+                    Console.WriteLine("Código inválido");
+                    codigo = null;
+                }
+            }
         }
 
         private int capacidadMaxima;
@@ -33,7 +45,18 @@ namespace GoXela_P__D
         public string Marca
         {
             get { return marca; }
-            set { marca = value; }
+            set 
+            {
+                if (value.Length < 10 && value != null) {
+                    Console.WriteLine("Marca válida");
+                    marca = value;
+                }
+                else
+                {
+                    Console.WriteLine("Marca inválida");
+                    marca = null;
+                }
+            }
         }
 
         private string modelo;
@@ -41,7 +64,19 @@ namespace GoXela_P__D
         public string Modelo
         {
             get { return modelo; }
-            set { modelo = value; }
+            set 
+            {
+                if (value.Length < 10 && value != null)
+                {
+                    Console.WriteLine("Modelo válido");
+                    modelo = value;
+                }
+                else
+                {
+                    Console.WriteLine("Modelo inválido");
+                    modelo = null;
+                }
+            }
         }
 
         private double costo;
@@ -61,7 +96,7 @@ namespace GoXela_P__D
             set { estado = value; }
         }
 
-        public Vehiculo(string codigo, int capacidadMaxima, string marca, string modelo, Estado estado)
+        public Vehiculos(string codigo, int capacidadMaxima, string marca, string modelo, Estado estado)
         {
             Codigo = codigo;
             CapacidadMaxima = capacidadMaxima;

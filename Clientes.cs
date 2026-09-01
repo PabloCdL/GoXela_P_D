@@ -13,8 +13,17 @@ namespace GoXela_P__D
         public int CantidadSolicitudes
         {
             get { return cantidadSolicitudes; }
-            set { cantidadSolicitudes = value; }
-        }
+            set
+            {
+                if (value > 0 && value < 5)
+                {
+                    Console.WriteLine("Cantidad de solicitudes válida");
+                    cantidadSolicitudes = value;
+                }
+                else
+                {
+                    Console.WriteLine("Cantidad de solicitudes inválida");
+                }
 
         public Clientes(string codigo, string nombreCompleto, int numeroTelefonico, string direccion, string correo, int cantidadSolicitudes) : base(codigo, nombreCompleto, numeroTelefonico, direccion, correo)
         {

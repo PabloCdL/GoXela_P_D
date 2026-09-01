@@ -8,7 +8,7 @@ namespace GoXela_P__D
 {
     public enum EstadoPaquete
     {
-        //estados
+        bueno, bonito , barato
     }
     internal class Paquete
     {
@@ -17,7 +17,19 @@ namespace GoXela_P__D
         public string Codigo
         {
             get { return codigo; }
-            set { codigo = value; }
+            set
+            {
+                if (value.Length > 5 && value != null)
+                {
+                    Console.WriteLine("Código válido");
+                    codigo = value;
+                }
+                else
+                {
+                    Console.WriteLine("Código inválido");
+                    codigo = null;
+                }
+            }
         }
 
         private string descripcion;
@@ -25,7 +37,19 @@ namespace GoXela_P__D
         public string Descripcion
         {
             get { return descripcion; }
-            set { descripcion = value; }
+            set
+            {
+                if (value.Length > 50 && value != null) 
+                {
+                    Console.WriteLine("Descripción válida");
+                    descripcion = value;
+                }
+                else
+                {
+                    Console.WriteLine("Descripción inválida");
+                    descripcion = null;
+                }
+            }
         }
 
         private double peso;
@@ -41,7 +65,19 @@ namespace GoXela_P__D
         public string DireccionOri
         {
             get { return direccionOri; }
-            set { direccionOri = value; }
+            set 
+            {
+                if (value.Length > 50 && value != null)
+                {
+                    Console.WriteLine("Dirección de origen válida");
+                    direccionOri = value;
+                }
+                else
+                {
+                    Console.WriteLine("Dirección de origen inválida");
+                    direccionOri = null; 
+                }
+            }
         }
 
         private string direccionDes;
@@ -49,7 +85,19 @@ namespace GoXela_P__D
         public string DireccionDes
         {
             get { return direccionDes; }
-            set { direccionDes = value; }
+            set 
+            {
+                if (value.Length > 50 && value != null)
+                {
+                    Console.WriteLine("Dirección de destino válida");
+                    direccionDes = value;
+                }
+                else
+                {
+                    Console.WriteLine("Dirección de destino inválida");
+                    direccionDes = null;
+                }
+            }
         }
 
         private EstadoPaquete estado;

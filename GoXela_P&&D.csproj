@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8F8A686C-1A8A-2253-F62E-77CD4E40BB5E}</ProjectGuid>
+    <ProjectGuid>{34076E27-352A-4E2E-80FB-B94F6A3C5A07}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>GoXela_P__D</RootNamespace>
     <AssemblyName>GoXela_P&amp;&amp;D</AssemblyName>
