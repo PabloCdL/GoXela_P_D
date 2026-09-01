@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{34076E27-352A-4E2E-80FB-B94F6A3C5A07}</ProjectGuid>
+    <ProjectGuid>{8F8A686C-1A8A-2253-F62E-77CD4E40BB5E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>GoXela_P__D</RootNamespace>
     <AssemblyName>GoXela_P&amp;&amp;D</AssemblyName>
@@ -43,8 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Automovil.cs" />
+    <Compile Include="Bicicleta.cs" />
+    <Compile Include="Clientes.cs" />
+    <Compile Include="Documento.cs" />
+    <Compile Include="Entregas.cs" />
+    <Compile Include="Incidencias.cs" />
+    <Compile Include="Motocicleta.cs" />
+    <Compile Include="Paquete.cs" />
+    <Compile Include="PaqueteEstandar.cs" />
+    <Compile Include="PaqueteFragil.cs" />
+    <Compile Include="PaqueteRefrigerado.cs" />
+    <Compile Include="Persona.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repartidores.cs" />
+    <Compile Include="Vehiculos.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
