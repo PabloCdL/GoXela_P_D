@@ -33,19 +33,17 @@ namespace GoXela_P__D
             {
                 if(value < 0 || value > 5)
                 {
-                    Console.WriteLine($"Cantidad no permitida PRUEBA"); //prueba
+                    Console.WriteLine($"Cantidad no permitida");
                 }else
                 {
-                   cantidadLimite = value;
+                    cantidadLimite = value;
                 }
-
             } // valor especifico
         }
 
         public PaqueteRefrigerado(string codigo, string descripcion, double peso, string direccionOri, string direccionDes, EstadoPaquete estado, int precio, int pase, int cantidadLimite)
             : base(codigo, descripcion, peso, direccionOri, direccionOri, estado)
         {
-            CantidadLimite = cantidadLimite;
 
         }
     }
