@@ -93,7 +93,19 @@ namespace GoXela_P__D
         public Estado Estado
         {
             get { return estado; }
-            set { estado = value; }
+            set
+            {
+                if (value != Estado.Libre && value != Estado.Ocupado)
+                {
+                    Console.WriteLine("Estado inválido");
+                    estado = 0;
+                }
+                else
+                {
+                    Console.WriteLine("Estado válido");
+                    estado = value;
+                })
+            }
         }
 
         public Vehiculos(string codigo, int capacidadMaxima, string marca, string modelo, Estado estado)

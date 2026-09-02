@@ -8,7 +8,7 @@ namespace GoXela_P__D
 {
     public enum EstadoPaquete
     {
-        bueno, bonito , barato
+        admitido, encamino, entregado
     }
     internal class Paquete
     {
@@ -60,42 +60,42 @@ namespace GoXela_P__D
             set { peso = value; }
         }
 
-        private string direccionOri;
+        private string direccionOrigen;
 
-        public string DireccionOri
+        public string DireccionOrigen
         {
-            get { return direccionOri; }
+            get { return direccionOrigen; }
             set 
             {
                 if (value.Length > 50 && value != null)
                 {
                     Console.WriteLine("Dirección de origen válida");
-                    direccionOri = value;
+                    direccionOrigen = value;
                 }
                 else
                 {
                     Console.WriteLine("Dirección de origen inválida");
-                    direccionOri = null; 
+                    direccionOrigen = null; 
                 }
             }
         }
 
-        private string direccionDes;
+        private string direccionDestino;
 
-        public string DireccionDes
+        public string DireccionDestino
         {
-            get { return direccionDes; }
+            get { return direccionDestino; }
             set 
             {
                 if (value.Length > 50 && value != null)
                 {
                     Console.WriteLine("Dirección de destino válida");
-                    direccionDes = value;
+                    direccionDestino = value;
                 }
                 else
                 {
                     Console.WriteLine("Dirección de destino inválida");
-                    direccionDes = null;
+                    direccionDestino = null;
                 }
             }
         }
@@ -105,16 +105,28 @@ namespace GoXela_P__D
         public EstadoPaquete Estado
         {
             get { return estado; }
-            set { estado = value; }
+            set
+            {
+                if (value != EstadoPaquete.admitido && value != EstadoPaquete.encamino && value != EstadoPaquete.entregado)
+                {
+                    Console.WriteLine("Estado inválido");
+                    estado = 0;
+                }
+                else
+                {
+                    Console.WriteLine("Estado válido");
+                    estado = value;
+                }
+            }
         }
 
-        public Paquete(string codigo, string descripcion, double peso, string direccionOri, string direccionDes, EstadoPaquete estado)
+        public Paquete(string codigo, string descripcion, double peso, string direccionOrigen, string direccionDestino, EstadoPaquete estado)
         {
             Codigo = codigo;
             Descripcion = descripcion;
             Peso = peso;
-            DireccionOri = direccionOri;
-            DireccionDes = direccionDes;
+            DireccionOrigen = direccionOrigen;
+            DireccionDestino = direccionDestino;
             Estado = estado;
         }
     }
