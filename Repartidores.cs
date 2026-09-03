@@ -22,19 +22,7 @@ namespace GoXela_P__D
         public TipoLicencia TipoLicencia
         {
             get { return tipoLicencia; }
-            set
-            {
-                if (value != TipoLicencia.M && value != TipoLicencia.C && value != TipoLicencia.B && value != TipoLicencia.A)
-                {
-                    Console.WriteLine("Tipo de licencia inválido");
-                    tipoLicencia = null;
-                }
-                else
-                {
-                    Console.WriteLine("Tipo de licencia válido");
-                    tipoLicencia = value;
-                }
-            }
+            set { tipoLicencia = value; }
         }
 
         private Disponibilidad disponibilidad;
@@ -42,19 +30,7 @@ namespace GoXela_P__D
         public Disponibilidad Disponibilidad
         {
             get { return disponibilidad; }
-            set
-            {
-                if (value != Disponibilidad.Disponible && value != Disponibilidad.Nodisponible)
-                {
-                    Console.WriteLine("Disponibilidad inválida");
-                    disponibilidad = null;
-                }
-                else
-                {
-                    Console.WriteLine("Disponibilidad válida");
-                    disponibilidad = value;
-                }
-            }
+            set { disponibilidad = value; }
         }
 
         private int cantidadEntregas;
@@ -64,14 +40,13 @@ namespace GoXela_P__D
             get { return cantidadEntregas; }
             set
             {
-                if (value < 0 && value != 5)
+                if (value >= 0)
                 {
-                    Console.WriteLine("Cantidad de entregas inválida");
+                    cantidadEntregas = value;
                 }
                 else
                 {
-                    Console.WriteLine("Cantidad de entregas válida");
-                    cantidadEntregas = value;
+                    Console.WriteLine("Cantidad de entregas inválida");
                 }
             }
         }
@@ -83,19 +58,18 @@ namespace GoXela_P__D
             get { return calificacion; }
             set
             {
-                if (value < 0 && value != 5)
+                if (value >= 0 && value <= 5)
                 {
-                    Console.WriteLine("Cantidad de entregas inválida");
+                    calificacion = value;
                 }
                 else
                 {
-                    Console.WriteLine("Cantidad de entregas válida");
-                    cantidadEntregas = value;
+                    Console.WriteLine("Cantidad de entregas inválida");
                 }
             }
         }
 
-        public Repartidores(string codigo, string nombreCompleto, int numeroTelefonico, string direccion, string correo, TipoLicencia tipoLicencia, Disponibilidad disponibilidad, int cantidadEntregas, int calificacion)
+        public Repartidores(string codigo, string nombreCompleto, string numeroTelefonico, string direccion, string correo, TipoLicencia tipoLicencia, Disponibilidad disponibilidad, int cantidadEntregas, int calificacion)
             : base(codigo, nombreCompleto, numeroTelefonico, direccion, correo)
         {
             Disponibilidad = disponibilidad;

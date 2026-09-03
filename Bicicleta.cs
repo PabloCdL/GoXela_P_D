@@ -13,12 +13,12 @@ namespace GoXela_P__D
         public double Precio
         {
             get { return precio; }
-            set { precio = value; } // ya definido
+            set { precio = value; }
         }
 
-        public Bicicleta(string codigo, int capacidadMaxima, string marca, string modelo, double costo, Estado estado, double precio) : base(codigo, capacidadMaxima, marca, modelo, estado)
+        public Bicicleta(string codigo, string marca, string modelo, Estado estado) : base(codigo, 10, marca, modelo, 5, estado)
         {
-
+            Precio = 10;
         }
     }
 }

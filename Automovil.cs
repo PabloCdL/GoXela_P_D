@@ -23,23 +23,22 @@ namespace GoXela_P__D
             get { return placa; }
             set 
             {
-                if (value.Length < 10 && value != null)
+                if (value != null && value.Length <= 10)
                 {
-                    Console.WriteLine("Placa válida");
                     placa = value;
                 }
                 else
                 {
                     Console.WriteLine("Placa inválida");
-                    placa = null;
                 }
             }
         }
 
 
-        public Automovil(string codigo, int capacidadMaxima, string marca, string modelo, double costo, Estado estado, double precio, string placa) : base(codigo, capacidadMaxima, marca, modelo, estado)
+        public Automovil(string codigo, string marca, string modelo, Estado estado, double precio, string placa) : base(codigo, 80, marca, modelo, 30, estado)
         {
             Placa = placa;
+            Precio = 40;
         }
     }
 }

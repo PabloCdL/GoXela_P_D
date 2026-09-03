@@ -13,7 +13,7 @@ namespace GoXela_P__D
         public double Precio
         {
             get { return precio; }
-            set { precio = value; } // ya definido
+            set { precio = value; }
         }
 
         private string placa;
@@ -23,21 +23,20 @@ namespace GoXela_P__D
             get { return placa; }
             set 
             {
-                if (value.Length < 10 && value != null)
+                if (value != null && value.Length <= 10)
                 {
-                    Console.WriteLine("Placa válida");
                     placa = value;
                 }
                 else
                 {
                     Console.WriteLine("Placa inválida");
-                    placa = null;
                 }
             }
         }
 
-        public Motocicleta(string codigo, int capacidadMaxima, string marca, string modelo, double costo, Estado estado, double precio, string placa) : base(codigo, capacidadMaxima, marca, modelo, estado)
+        public Motocicleta(string codigo, string marca, string modelo, Estado estado, double precio, string placa) : base(codigo, 30, marca, modelo, 15, estado)
         {
+            Precio = 25;
             Placa = placa;
         }
     }

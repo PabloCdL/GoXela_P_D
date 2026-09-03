@@ -15,15 +15,13 @@ namespace GoXela_P__D
             get { return codigo; }
             set
             {
-                if (value.Length < 5 && value != null)
+                if (value != null && value.Length <= 5)
                 {
-                    Console.WriteLine("Código válido");
                     codigo = value;
                 }
                 else
                 {
                     Console.WriteLine("Código inválido");
-                    codigo = null;
                 }
             }
         }
@@ -35,15 +33,13 @@ namespace GoXela_P__D
             get { return nombreCompleto; }
             set 
             {
-                if (value.Length < 50 && value != null)
+                if (value != null && value.Length <= 50)
                 {
-                    Console.WriteLine("Nombre completo válido");
                     nombreCompleto = value;
                 }
                 else
                 {
                     Console.WriteLine("Nombre completo inválido");
-                    nombreCompleto = null;
                 }
             }
         }
@@ -55,15 +51,13 @@ namespace GoXela_P__D
             get { return numeroTelefonico; }
             set 
             {
-                if (value.Length == 8 && value != null)
+                if (value != null && value.Length == 8)
                 {
-                    Console.WriteLine("Número telefónico válido");
                     numeroTelefonico = value;
                 }
                 else
                 {
                     Console.WriteLine("Número telefónico inválido");
-                    numeroTelefonico = null;
                 }
             }
         }
@@ -75,15 +69,13 @@ namespace GoXela_P__D
             get { return direccion; }
             set 
             {
-                if (value.Length < 50 && value != null)
+                if (value != null && value.Length <= 50)
                 {
-                    Console.WriteLine("Dirección válida");
                     direccion = value;
                 }
                 else
                 {
                     Console.WriteLine("Dirección inválida");
-                    direccion = null;
                 }
             }
         }
@@ -95,15 +87,13 @@ namespace GoXela_P__D
             get { return correo; }
             set 
             {
-                if (value.Contains("@") && value != null)
+                if (value != null && value.Contains("@") && value.Length <= 50)
                 {
-                    Console.WriteLine("Correo válido");
                     correo = value;
                 }
                 else
                 {
                     Console.WriteLine("Correo inválido");
-                    correo = null;
                 }
             }
         }

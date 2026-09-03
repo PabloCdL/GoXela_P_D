@@ -30,7 +30,7 @@ namespace GoXela_P__D
                 {
                     Console.WriteLine($"Dato invalido... Intente de nuevo");
                 }
-                else
+                else 
                 {
                     switch (op)
                     {
@@ -38,7 +38,7 @@ namespace GoXela_P__D
                             //Clientes
                             do
                             {
-                                Console.WriteLine(===== CLIENTES =====);
+                                Console.WriteLine("===== CLIENTES =====");
                                 Console.WriteLine($"1. Nuevo Cliente");
                                 Console.WriteLine($"2. Mostrar Clientes");
                                 Console.WriteLine($"3. Buscar Cliente");
@@ -46,9 +46,9 @@ namespace GoXela_P__D
                                 Console.WriteLine($"5. Borrar Información");
                                 Console.WriteLine($"6. Salir");
                                 
-                                if(!int.TryParse(Console.ReadLIne(), out op1))
+                                if(!int.TryParse(Console.ReadLine(), out op1))
                                 {
-                                    Console.WriteLine($"Opcion no valida (No es un valor numerico)")
+                                    Console.WriteLine($"Opcion no valida (No es un valor numerico)");
                                 } else
                                 {
                                     switch(op1)
@@ -76,7 +76,7 @@ namespace GoXela_P__D
                             //Repartidores
                             do
                             {
-                                Console.WriteLine(===== REPARTIDORES =====);
+                                Console.WriteLine("===== REPARTIDORES =====");
                                 Console.WriteLine($"1. Nuevo Repartidor");
                                 Console.WriteLine($"2. Mostrar Repartidores");
                                 Console.WriteLine($"3. Buscar Repartidor");
@@ -84,9 +84,9 @@ namespace GoXela_P__D
                                 Console.WriteLine($"5. Borrar Información");
                                 Console.WriteLine($"6. Salir");
 
-                                if (!int.TryParse(Console.ReadLIne(), out op2))
+                                if (!int.TryParse(Console.ReadLine(), out op2))
                                 {
-                                    Console.WriteLine($"Opcion no valida (No es un valor numerico)")
+                                    Console.WriteLine($"Opcion no valida (No es un valor numerico)");
                                 }
                                 else
                                 {
@@ -105,16 +105,17 @@ namespace GoXela_P__D
                                         case 6:
                                             break;
                                         default:
+                                            Console.WriteLine($"Opcion fuera de rango");
                                             break;
                                     }
                                 }
-                            } while (op1 != 6);
+                            } while (op2 != 6);
                             break;
                         case 3:
                             //Vehículos
                             do
                             {
-                                Console.WriteLine(===== VEHICULOS =====);
+                                Console.WriteLine("===== VEHICULOS =====");
                                 Console.WriteLine($"1. Nuevo Vehículo");
                                 Console.WriteLine($"2. Mostrar Vehículos");
                                 Console.WriteLine($"3. Buscar Vehiculo");
@@ -122,9 +123,9 @@ namespace GoXela_P__D
                                 Console.WriteLine($"5. Borrar Información");
                                 Console.WriteLine($"6. Salir");
 
-                                if (!int.TryParse(Console.ReadLIne(), out op3))
+                                if (!int.TryParse(Console.ReadLine(), out op3))
                                 {
-                                    Console.WriteLine($"Opcion no valida (No es un valor numerico)")
+                                    Console.WriteLine($"Opcion no valida (No es un valor numerico)");
                                 }
                                 else
                                 {
@@ -143,16 +144,17 @@ namespace GoXela_P__D
                                         case 6:
                                             break;
                                         default:
+                                            Console.WriteLine($"Opcion fuera de rango");  
                                             break;
                                     }
                                 }
-                            } while (op1 != 6);
+                            } while (op3 != 6);
                             break;
                         case 4:
                             //Paquetes
                             do
                             {
-                                Console.WriteLine(===== PAQUETES =====);
+                                Console.WriteLine("===== PAQUETES =====");
                                 Console.WriteLine($"1. Nuevo Paquete");
                                 Console.WriteLine($"2. Mostrar Paquetes");
                                 Console.WriteLine($"3. Buscar Paquete");
@@ -160,9 +162,9 @@ namespace GoXela_P__D
                                 Console.WriteLine($"5. Borrar Información");
                                 Console.WriteLine($"6. Salir");
 
-                                if (!int.TryParse(Console.ReadLIne(), out op4))
+                                if (!int.TryParse(Console.ReadLine(), out op4))
                                 {
-                                    Console.WriteLine($"Opcion no valida (No es un valor numerico)")
+                                    Console.WriteLine($"Opcion no valida (No es un valor numerico)");
                                 }
                                 else
                                 {
@@ -184,13 +186,13 @@ namespace GoXela_P__D
                                             break;
                                     }
                                 }
-                            } while (op1 != 6);
+                            } while (op4 != 6);
                             break;
                         case 5:
                             //Entregas 
                             do
                             {
-                                Console.WriteLine(===== ENTREGAS =====);
+                                Console.WriteLine("===== ENTREGAS =====");
                                 Console.WriteLine($"1. Nueva Entrega");
                                 Console.WriteLine($"2. Mostrar Entregas");
                                 Console.WriteLine($"3. Buscar Entrega");
@@ -198,9 +200,9 @@ namespace GoXela_P__D
                                 Console.WriteLine($"5. Borrar Entrega");
                                 Console.WriteLine($"6. Salir");
 
-                                if (!int.TryParse(Console.ReadLIne(), out op5))
+                                if (!int.TryParse(Console.ReadLine(), out op5))
                                 {
-                                    Console.WriteLine($"Opcion no valida (No es un valor numerico)")
+                                    Console.WriteLine($"Opcion no valida (No es un valor numerico)");
                                 }
                                 else
                                 {
@@ -222,7 +224,7 @@ namespace GoXela_P__D
                                             break;
                                     }
                                 }
-                            } while (op1 != 6);
+                            } while (op5 != 6);
                             break;
                         case 6:
                             //Incidencias

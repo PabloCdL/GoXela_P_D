@@ -19,15 +19,13 @@ namespace GoXela_P__D
             get { return codigo; }
             set 
             {
-                if (value.Length < 5 && value != null)
+                if (value != null && value.Length <= 5)
                 {
-                    Console.WriteLine("Código válido");
                     codigo = value;
                 }
                 else
                 {
                     Console.WriteLine("Código inválido");
-                    codigo = null;
                 }
             }
         }
@@ -37,7 +35,17 @@ namespace GoXela_P__D
         public int CapacidadMaxima
         {
             get { return capacidadMaxima; }
-            set { capacidadMaxima = value; }
+            set 
+            {
+                if (value > 0)
+                {
+                    capacidadMaxima = value;
+                }
+                else
+                {
+                    Console.WriteLine("Capacidad máxima inválida");
+                }
+            }
         }
 
         private string marca;
@@ -47,14 +55,13 @@ namespace GoXela_P__D
             get { return marca; }
             set 
             {
-                if (value.Length < 10 && value != null) {
-                    Console.WriteLine("Marca válida");
+                if (value != null && value.Length <= 10)
+                {
                     marca = value;
                 }
                 else
                 {
                     Console.WriteLine("Marca inválida");
-                    marca = null;
                 }
             }
         }
@@ -66,15 +73,13 @@ namespace GoXela_P__D
             get { return modelo; }
             set 
             {
-                if (value.Length < 10 && value != null)
+                if (value != null && value.Length <= 10)
                 {
-                    Console.WriteLine("Modelo válido");
                     modelo = value;
                 }
                 else
                 {
                     Console.WriteLine("Modelo inválido");
-                    modelo = null;
                 }
             }
         }
@@ -84,7 +89,17 @@ namespace GoXela_P__D
         public double Costo
         {
             get { return costo; }
-            set { costo = value; }
+            set 
+            {
+                if (value >= 0)
+                {
+                    costo = value;
+                }
+                else
+                {
+                    Console.WriteLine("Costo inválido");
+                }
+            }
         }
 
 
@@ -93,27 +108,16 @@ namespace GoXela_P__D
         public Estado Estado
         {
             get { return estado; }
-            set
-            {
-                if (value != Estado.Libre && value != Estado.Ocupado)
-                {
-                    Console.WriteLine("Estado inválido");
-                    estado = 0;
-                }
-                else
-                {
-                    Console.WriteLine("Estado válido");
-                    estado = value;
-                })
-            }
+            set { estado = value; }
         }
 
-        public Vehiculos(string codigo, int capacidadMaxima, string marca, string modelo, Estado estado)
+        public Vehiculos(string codigo, int capacidadMaxima, string marca, string modelo, double costo,Estado estado)
         {
             Codigo = codigo;
             CapacidadMaxima = capacidadMaxima;
             Marca = marca;
             Modelo = modelo;
+            Costo = costo;
             Estado = estado;
         }
     }

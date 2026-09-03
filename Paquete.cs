@@ -19,15 +19,13 @@ namespace GoXela_P__D
             get { return codigo; }
             set
             {
-                if (value.Length > 5 && value != null)
+                if (value != null && value.Length <= 5)
                 {
-                    Console.WriteLine("Código válido");
                     codigo = value;
                 }
                 else
                 {
                     Console.WriteLine("Código inválido");
-                    codigo = null;
                 }
             }
         }
@@ -39,15 +37,13 @@ namespace GoXela_P__D
             get { return descripcion; }
             set
             {
-                if (value.Length > 50 && value != null) 
+                if (value != null && value.Length <= 50) 
                 {
-                    Console.WriteLine("Descripción válida");
                     descripcion = value;
                 }
                 else
                 {
                     Console.WriteLine("Descripción inválida");
-                    descripcion = null;
                 }
             }
         }
@@ -57,7 +53,17 @@ namespace GoXela_P__D
         public double Peso
         {
             get { return peso; }
-            set { peso = value; }
+            set 
+            {
+                if (value >0)
+                {
+                    peso = value;
+                }
+                else
+                {
+                    Console.WriteLine("Peso inválido");
+                }
+            }
         }
 
         private string direccionOrigen;
@@ -67,15 +73,13 @@ namespace GoXela_P__D
             get { return direccionOrigen; }
             set 
             {
-                if (value.Length > 50 && value != null)
+                if (value != null && value.Length <= 50)
                 {
-                    Console.WriteLine("Dirección de origen válida");
                     direccionOrigen = value;
                 }
                 else
                 {
                     Console.WriteLine("Dirección de origen inválida");
-                    direccionOrigen = null; 
                 }
             }
         }
@@ -87,15 +91,13 @@ namespace GoXela_P__D
             get { return direccionDestino; }
             set 
             {
-                if (value.Length > 50 && value != null)
+                if (value != null && value.Length <= 50)
                 {
-                    Console.WriteLine("Dirección de destino válida");
                     direccionDestino = value;
                 }
                 else
                 {
                     Console.WriteLine("Dirección de destino inválida");
-                    direccionDestino = null;
                 }
             }
         }
@@ -105,19 +107,7 @@ namespace GoXela_P__D
         public EstadoPaquete Estado
         {
             get { return estado; }
-            set
-            {
-                if (value != EstadoPaquete.admitido && value != EstadoPaquete.encamino && value != EstadoPaquete.entregado)
-                {
-                    Console.WriteLine("Estado inválido");
-                    estado = 0;
-                }
-                else
-                {
-                    Console.WriteLine("Estado válido");
-                    estado = value;
-                }
-            }
+            set { estado = value; }
         }
 
         public Paquete(string codigo, string descripcion, double peso, string direccionOrigen, string direccionDestino, EstadoPaquete estado)

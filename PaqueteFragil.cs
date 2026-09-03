@@ -13,15 +13,7 @@ namespace GoXela_P__D
         public int Precio
         {
             get { return precio; }
-            set { precio = value; } // valor especifico
-        }
-
-        private int peso;
-
-        public int Peso
-        {
-            get { return peso; }
-            set { peso = value; } // valor especifico
+            set { precio = value; }
         }
 
         private int cantidadLimite;
@@ -29,12 +21,14 @@ namespace GoXela_P__D
         public int CantidadLimite
         {
             get { return cantidadLimite; }
-            set { cantidadLimite = value; } // valor especifico
+            set { cantidadLimite = value; }
         }
 
-        public PaqueteFragil(string codigo, string descripcion, double peso, string direccionOri, string direccionDes, EstadoPaquete estado, int precio, int pase, int cantidadLimite)
-            : base(codigo, descripcion, peso, direccionOri, direccionOri, estado)
+        public PaqueteFragil(string codigo, string descripcion, double peso, string direccionOrigen, string direccionDestino, EstadoPaquete estado)
+            : base(codigo, descripcion, peso, direccionOrigen, direccionDestino, estado)
         {
+            Precio = 25;
+            CantidadLimite = 5;
 
         }
     }
