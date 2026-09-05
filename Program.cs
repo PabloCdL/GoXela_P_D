@@ -11,7 +11,8 @@ namespace GoXela_P__D
         static void Main(string[] args)
         {
             int op, op1, op2, op3,op4,op5;
-            
+            string codigo; string nombre; string numeroTelefonico; string direccion; string correo; int cantidadSoli;
+            List<Clientes> listaClientes = new List<Clientes>();
             do
             {            
                 Console.WriteLine($"=========================");
@@ -54,10 +55,117 @@ namespace GoXela_P__D
                                     switch(op1)
                                     {
                                         case 1:
+                                            do
+                                            {
+                                                Console.WriteLine($"Ingrese el codigo");
+                                                codigo = Console.ReadLine();
+                                                if (!string.IsNullOrWhiteSpace(codigo) && codigo.Length <= 5)
+                                                {
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("Código inválido");
+                                                }
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine($"Ingrese el nombre");
+                                                nombre = Console.ReadLine();
+                                                if (!string.IsNullOrWhiteSpace(nombre) && nombre.Length <= 5)
+                                                {
+                                                    break;
+                                                   
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("Código inválido");
+                                                }
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine($"Ingrese el numero telefonico");
+                                                numeroTelefonico = Console.ReadLine();
+                                                if (!string.IsNullOrWhiteSpace(numeroTelefonico) && numeroTelefonico.Length <= 5)
+                                                {
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("Código inválido");
+                                                }
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine($"Ingrese la dirección");
+                                                direccion = Console.ReadLine();
+                                                if (!string.IsNullOrWhiteSpace(direccion) && direccion.Length <= 5)
+                                                {
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("Código inválido");
+                                                }
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine($"Ingrese el correo");
+                                                correo = Console.ReadLine();
+                                                if (!string.IsNullOrWhiteSpace(correo) && correo.Length <= 5)
+                                                {
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("Código inválido");
+                                                }
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine($"Ingrese la cantidad de solicitudes");
+                                                if(!int.TryParse(Console.ReadLine(), out cantidadSoli))
+                                                {
+                                                    Console.WriteLine($"Dato no valido");
+                                                }else
+                                                { 
+                                                if (cantidadSoli > 0 && cantidadSoli <= 5)
+                                                {
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine("Cantidad de solicitudes inválida");
+                                                }
+                                                }
+                                            } while (true);
+
+                                            listaClientes.Add(new Clientes(codigo, nombre, numeroTelefonico, direccion, correo, cantidadSoli));
+
                                             break;
                                         case 2:
+
+                                            if(listaClientes.Count == 0)
+                                            {
+                                                Console.WriteLine($"No existen clientes registrados");
+                                            }else
+                                            {
+                                                foreach (var item in listaClientes)
+                                                {
+                                                    item.MostrarInformacion();
+                                                }
+                                            }
+
+                                            Console.WriteLine($"Precione cualquier tecla para continuar");
+                                            Console.ReadKey();
                                             break;
                                         case 3:
+
                                             break;
                                         case 4:
                                             break;

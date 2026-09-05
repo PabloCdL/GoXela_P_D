@@ -135,9 +135,9 @@ namespace GoXela_P__D
             get { return estado; }
             set { estado = value; }
         }
-        private TarifaBase tarifaBase;
+        private int tarifaBase;
 
-        public TarifaBase TarifaBase
+        public int TarifaBase
         {
             get { return tarifaBase; }
             set 
@@ -187,7 +187,7 @@ namespace GoXela_P__D
             }
         }
 
-        public Entregas (Clientes cliente, Paquete paquete, Repartidores repartidor, Vehiculos vehiculo, DateTime fechaSolicitud, double distancia, TipoServicio tipoServicio, EstadoEntrega estado, TarifaBase tarifaBase, double recargos, double total)
+        public Entregas (Clientes cliente, Paquete paquete, Repartidores repartidor, Vehiculos vehiculo, DateTime fechaSolicitud, double distancia, TipoServicio tipoServicio, EstadoEntrega estado, int tarifaBase, double recargos, double total)
         {
             Cliente = cliente;
             Paquete = paquete;

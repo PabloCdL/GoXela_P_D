@@ -30,5 +30,16 @@ namespace GoXela_P__D
         {
             CantidadSolicitudes = cantidadSolicitudes;
         }
+
+        public void MostrarInformacion()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"El codigo es: {Codigo}");
+            Console.WriteLine($"El nombre es: {NombreCompleto}");
+            Console.WriteLine($"El numero telefonico es: {NumeroTelefonico}");
+            Console.WriteLine($"La direccion es: {Direccion}");
+            Console.WriteLine($"El correo es: {Correo}");
+            Console.WriteLine($"La cantidad de solicitudes es: {CantidadSolicitudes}");
+        }
     }
 }
