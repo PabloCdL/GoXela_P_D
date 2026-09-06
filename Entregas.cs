@@ -142,7 +142,7 @@ namespace GoXela_P__D
             get { return tarifaBase; }
             set 
             {
-                if (value != null)
+                if (tarifaBase < 0)
                 {
                     tarifaBase = value;
                 }

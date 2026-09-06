@@ -69,6 +69,22 @@ namespace GoXela_P__D
             }
         }
 
+        public void MostrarInformacion()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"El codigo es: {Codigo}");
+            Console.WriteLine($"El nombre es: {NombreCompleto}");
+            Console.WriteLine($"El numero telefonico es: {NumeroTelefonico}");
+            Console.WriteLine($"La direccion es: {Direccion}");
+            Console.WriteLine($"El correo es: {Correo}");
+            Console.WriteLine($"El tipo del licencia es: {TipoLicencia}");
+            Console.WriteLine($"Disponibilidad: {Disponibilidad}");
+            Console.WriteLine($"Cantidad de entregas: {cantidadEntregas}");
+            Console.WriteLine($"Calificacion: {calificacion}");
+            Console.WriteLine();
+            Console.ResetColor();
+        }
+
         public Repartidores(string codigo, string nombreCompleto, string numeroTelefonico, string direccion, string correo, TipoLicencia tipoLicencia, Disponibilidad disponibilidad, int cantidadEntregas, int calificacion)
             : base(codigo, nombreCompleto, numeroTelefonico, direccion, correo)
         {

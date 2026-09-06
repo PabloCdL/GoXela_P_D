@@ -7,15 +7,7 @@ using System.Threading.Tasks;
 namespace GoXela_P__D
 {
     internal class Motocicleta : Vehiculos
-    {
-        private double precio;
-
-        public double Precio
-        {
-            get { return precio; }
-            set { precio = value; }
-        }
-
+    {        
         private string placa;
 
         public string Placa
@@ -34,9 +26,16 @@ namespace GoXela_P__D
             }
         }
 
-        public Motocicleta(string codigo, string marca, string modelo, Estado estado, double precio, string placa) : base(codigo, 30, marca, modelo, 15, estado)
+
+        public override void MostrarInformacion()
         {
-            Precio = 25;
+            base.MostrarInformacion();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"Placa: {Placa}");
+            Console.ResetColor();
+        }
+        public Motocicleta(string codigo, string marca, string modelo, Estado estado, double precio, string placa) : base(codigo, 30, marca, modelo, precio, estado)
+        {
             Placa = placa;
         }
     }

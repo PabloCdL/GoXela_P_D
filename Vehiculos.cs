@@ -111,6 +111,18 @@ namespace GoXela_P__D
             set { estado = value; }
         }
 
+        public virtual void MostrarInformacion()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"Código: {Codigo}");
+            Console.WriteLine($"Marca: {Marca}");
+            Console.WriteLine($"Modelo: {Modelo}");
+            Console.WriteLine($"Capacidad Máxima: {CapacidadMaxima}");
+            Console.WriteLine($"Costo: Q{Costo}");
+            Console.WriteLine($"Estado: {Estado}");
+            Console.ResetColor();
+        }
+
         public Vehiculos(string codigo, int capacidadMaxima, string marca, string modelo, double costo,Estado estado)
         {
             Codigo = codigo;

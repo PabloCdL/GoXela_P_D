@@ -46,6 +46,7 @@ namespace GoXela_P__D
             Console.WriteLine($"La direccion es: {Direccion}");
             Console.WriteLine($"El correo es: {Correo}");
             Console.WriteLine($"La cantidad de solicitudes es: {CantidadSolicitudes}");
+            Console.WriteLine();
             Console.ResetColor();  
         }
     }

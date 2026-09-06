@@ -8,14 +8,7 @@ namespace GoXela_P__D
 {
     internal class Automovil : Vehiculos
     {
-        private double precio;
-
-        public double Precio
-        {
-            get { return precio; }
-            set { precio = value; } // ya definido
-        }
-
+        
         private string placa;
 
         public string Placa
@@ -34,11 +27,18 @@ namespace GoXela_P__D
             }
         }
 
+        public override void MostrarInformacion()
+        {
+            base.MostrarInformacion();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"Placa: {Placa}");
+            Console.ResetColor();
+        }
 
-        public Automovil(string codigo, string marca, string modelo, Estado estado, double precio, string placa) : base(codigo, 80, marca, modelo, 30, estado)
+
+        public Automovil(string codigo, string marca, string modelo, Estado estado, double precio, string placa) : base(codigo, 80, marca, modelo, precio, estado)
         {
             Placa = placa;
-            Precio = 40;
         }
     }
 }

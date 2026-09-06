@@ -16,7 +16,7 @@ namespace GoXela_P__D
             set { precio = value; }
         }
 
-        public Bicicleta(string codigo, string marca, string modelo, Estado estado) : base(codigo, 10, marca, modelo, 5, estado)
+        public Bicicleta(string codigo, string marca, string modelo, Estado estado, double precio) : base(codigo, 10, marca, modelo, 5, estado)
         {
             Precio = 10;
         }
