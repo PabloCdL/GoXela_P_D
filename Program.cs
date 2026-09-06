@@ -817,25 +817,11 @@ namespace GoXela_P__D
                                             string codigoV; string marca; string modelo; double costo = 0; string placa = "";
                                             Estado estadoSeleccionado;
                                             Console.WriteLine($"===== REGISTRO DE VEHÍCULOS =====");
-
-                                            Console.WriteLine("Seleccione el tipo de vehículo:");
-                                            Console.WriteLine($"1. Automóvil");
-                                            Console.WriteLine($"2. Motocicleta");
-                                            Console.WriteLine($"3. Bicicleta");
-                                            Console.Write($"Opciónes: ");
-                                            string tipoVehiculo = Console.ReadLine();
-
-                                            if (tipoVehiculo != "1" && tipoVehiculo != "2" && tipoVehiculo != "3")
-                                            {
-                                                Console.WriteLine("Opción de vehículo no válida");
-                                                Console.WriteLine("Presione cualquier tecla para continuar...");
-                                                Console.ReadKey();
-                                                break;
-                                            }
+                                                                                      
 
                                             do
                                             {
-                                                Console.Write($"Ingrese el código: ");
+                                                Console.WriteLine($"Ingrese el código: ");
                                                 codigoV = Console.ReadLine();
                                                 if (!string.IsNullOrWhiteSpace(codigoV) && codigoV.Length <= 5)
                                                 {
@@ -846,7 +832,7 @@ namespace GoXela_P__D
 
                                             do
                                             {
-                                                Console.Write($"Ingrese la marca: ");
+                                                Console.WriteLine($"Ingrese la marca: ");
                                                 marca = Console.ReadLine();
                                                 if (!string.IsNullOrWhiteSpace(marca) && marca.Length <= 10)
                                                 {
@@ -857,7 +843,7 @@ namespace GoXela_P__D
 
                                             do
                                             {
-                                                Console.Write($"Ingrese el modelo: ");
+                                                Console.WriteLine($"Ingrese el modelo: ");
                                                 modelo = Console.ReadLine();
                                                 if (!string.IsNullOrWhiteSpace(modelo) && modelo.Length <= 10)
                                                 {
@@ -872,7 +858,7 @@ namespace GoXela_P__D
                                                 Console.WriteLine($"Ingrese el estado:");
                                                 Console.WriteLine($"1. Libre");
                                                 Console.WriteLine($"2. Ocupado");
-                                                Console.Write($"Opción: ");
+                                                Console.WriteLine($"Opción: ");
                                                 string opcionEstado = Console.ReadLine();
 
                                                 if (opcionEstado == "1")
@@ -888,49 +874,69 @@ namespace GoXela_P__D
                                                 Console.WriteLine($"Opción no válida. Intente de nuevo.");
                                             } while (true);
 
-                                            switch (tipoVehiculo)
+                                            do
                                             {
-                                                case "1":
-                                                    do
+                                                Console.WriteLine("Seleccione el tipo de vehículo:");
+                                                Console.WriteLine($"1. Automóvil");
+                                                Console.WriteLine($"2. Motocicleta");
+                                                Console.WriteLine($"3. Bicicleta");
+                                                Console.WriteLine($"Opciónes: ");
+                                                string tipoVehiculo = Console.ReadLine();
+
+                                                if (tipoVehiculo != "1" && tipoVehiculo != "2" && tipoVehiculo != "3")
+                                                {
+                                                    Console.WriteLine("Opción de vehículo no válida");
+                                                    Console.WriteLine("Presione cualquier tecla para continuar...");
+                                                    Console.ReadKey();
+
+                                                }
+                                                else
+                                                {
+                                                    switch (tipoVehiculo)
                                                     {
-                                                        Console.Write($"Ingrese la placa del automóvil:");
-                                                        placa = Console.ReadLine();
-                                                        if (!string.IsNullOrWhiteSpace(placa) && placa.Length <= 10)
-                                                        {
+                                                        case "1":
+                                                            do
+                                                            {
+                                                                Console.WriteLine($"Ingrese la placa del automóvil:");
+                                                                placa = Console.ReadLine();
+                                                                if (!string.IsNullOrWhiteSpace(placa) && placa.Length <= 10)
+                                                                {
+                                                                    break;
+                                                                }
+                                                                Console.WriteLine($"Placa inválida");
+                                                            } while (true);
+
+                                                            costo = 40.0;
+                                                            listaVehiculos.Add(new Automovil(codigoV, marca, modelo, estadoSeleccionado, costo, placa));
+                                                            Console.WriteLine($"Automóvil registrado exitosamente");
                                                             break;
-                                                        }
-                                                        Console.WriteLine($"Placa inválida");
-                                                    } while (true);
 
-                                                    costo = 40.0;
-                                                    listaVehiculos.Add(new Automovil(codigoV, marca, modelo, estadoSeleccionado, costo, placa));
-                                                    Console.WriteLine($"Automóvil registrado exitosamente");
-                                                    break;
+                                                        case "2":
+                                                            do
+                                                            {
+                                                                Console.WriteLine($"Ingrese la placa de la motocicleta: ");
+                                                                placa = Console.ReadLine();
+                                                                if (!string.IsNullOrWhiteSpace(placa) && placa.Length <= 10)
+                                                                {
+                                                                    break;
+                                                                }
+                                                                Console.WriteLine($"Placa inválida");
+                                                            } while (true);
 
-                                                case "2":
-                                                    do
-                                                    {
-                                                        Console.Write($"Ingrese la placa de la motocicleta: ");
-                                                        placa = Console.ReadLine();
-                                                        if (!string.IsNullOrWhiteSpace(placa) && placa.Length <= 10)
-                                                        {
+                                                            costo = 25.0;
+                                                            listaVehiculos.Add(new Motocicleta(codigoV, marca, modelo, estadoSeleccionado, costo, placa));
+                                                            Console.WriteLine($"Motocicleta registrada exitosamente");
                                                             break;
-                                                        }
-                                                        Console.WriteLine($"Placa inválida");
-                                                    } while (true);
 
-                                                    costo = 25.0;
-                                                    listaVehiculos.Add(new Motocicleta(codigoV, marca, modelo, estadoSeleccionado, costo, placa));
-                                                    Console.WriteLine($"Motocicleta registrada exitosamente");
+                                                        case "3":
+                                                            costo = 10.0;
+                                                            listaVehiculos.Add(new Bicicleta(codigoV, marca, modelo, estadoSeleccionado, costo));
+                                                            Console.WriteLine($"Bicicleta registrada exitosamente");
+                                                            break;
+                                                    }
                                                     break;
-
-                                                case "3":
-                                                    costo = 10.0;
-                                                    listaVehiculos.Add(new Bicicleta(codigoV, marca, modelo, estadoSeleccionado, costo));
-                                                    Console.WriteLine($"Bicicleta registrada exitosamente");
-                                                    break;
-                                            }
-                                    
+                                                }
+                                            } while (true);
                                             Console.WriteLine("Presione cualquier tecla para continuar...");
                                             Console.ReadKey();
                                             break;
@@ -953,10 +959,51 @@ namespace GoXela_P__D
                                                 }
                                             }
 
-                                            Console.WriteLine("\nPresione cualquier tecla para continuar...");
+                                            Console.WriteLine($"Presione cualquier tecla para continuar...");
                                             Console.ReadKey();
                                             break;
                                         case 3:
+                                            string codBuscar;
+                                            Console.WriteLine($"===== BUSCAR VEHICULO =====");
+                                            do
+                                            {
+                                                Console.WriteLine("Ingrese el código del vehiculo a buscar: ");
+                                                codBuscar = Console.ReadLine();
+                                                if (!string.IsNullOrWhiteSpace(codBuscar) && codBuscar.Length <= 50)
+                                                {
+                                                    break;
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine($"Dato no valido");
+                                                }
+
+                                            } while (true);
+
+
+                                            int posBuscada = -1;
+
+                                            for (int i = 0; i < listaVehiculos.Count; i++)
+                                            {
+                                                if (listaVehiculos[i].Codigo == codBuscar)
+                                                {
+                                                    posBuscada = i;
+                                                    break;
+                                                }
+                                            }
+
+                                            if (posBuscada != -1)
+                                            {
+                                                Console.WriteLine($"Vehiculo encontrado en la posición: {posBuscada}");
+                                                listaVehiculos[posBuscada].MostrarInformacion();
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine($"El vehiculo no esta registrado");
+                                            }
+
+                                            Console.WriteLine("Presione cualquier tecla para continuar...");
+                                            Console.ReadKey();
                                             break;
                                         case 4:
                                             break;

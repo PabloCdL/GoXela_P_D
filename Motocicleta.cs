@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace GoXela_P__D
 {
     internal class Motocicleta : Vehiculos
-    {        
+    {
+        public override string TipoVehiculo => "Motocicleta";
         private string placa;
 
         public string Placa
@@ -28,7 +29,7 @@ namespace GoXela_P__D
 
 
         public override void MostrarInformacion()
-        {
+        {            
             base.MostrarInformacion();
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"Placa: {Placa}");

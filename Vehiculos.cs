@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace GoXela_P__D
 {
+    
     public enum Estado
     {
         Libre, Ocupado
     }
     internal class Vehiculos
     {
+        public virtual string TipoVehiculo => "Vehículo";
         private string codigo;
 
         public string Codigo
@@ -114,6 +116,7 @@ namespace GoXela_P__D
         public virtual void MostrarInformacion()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"Tipo: {TipoVehiculo}");
             Console.WriteLine($"Código: {Codigo}");
             Console.WriteLine($"Marca: {Marca}");
             Console.WriteLine($"Modelo: {Modelo}");

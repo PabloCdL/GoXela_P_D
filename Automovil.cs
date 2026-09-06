@@ -8,11 +8,13 @@ namespace GoXela_P__D
 {
     internal class Automovil : Vehiculos
     {
-        
+        public override string TipoVehiculo => "Automovil";
+
         private string placa;
 
         public string Placa
         {
+
             get { return placa; }
             set 
             {
@@ -28,7 +30,7 @@ namespace GoXela_P__D
         }
 
         public override void MostrarInformacion()
-        {
+        {            
             base.MostrarInformacion();
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"Placa: {Placa}");

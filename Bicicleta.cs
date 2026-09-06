@@ -8,6 +8,7 @@ namespace GoXela_P__D
 {
     internal class Bicicleta : Vehiculos
     {
+        public override string TipoVehiculo => "Bicicleta";
         private double precio;
 
         public double Precio
