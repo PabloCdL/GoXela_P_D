@@ -24,7 +24,7 @@ namespace GoXela_P__D
                     Console.WriteLine("Cantidad de solicitudes inválida");
                 }
             }
-        }
+        } 
        
         public Clientes(string codigo, string nombreCompleto, string numeroTelefonico, string direccion, string correo, int cantidadSolicitudes) : base(codigo, nombreCompleto, numeroTelefonico, direccion, correo)
         {
@@ -36,7 +36,7 @@ namespace GoXela_P__D
             return NombreCompleto.Equals(nombreBuscar, StringComparison.OrdinalIgnoreCase);
         }
             
-
+        
         public void MostrarInformacion()
         {
             Console.ForegroundColor = ConsoleColor.Blue;

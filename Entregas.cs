@@ -111,7 +111,7 @@ namespace GoXela_P__D
             get { return distancia; }
             set
             {
-                if (value >= 0)
+                if (value > 0)
                 {
                     distancia = value;
                 }
@@ -142,7 +142,7 @@ namespace GoXela_P__D
             get { return tarifaBase; }
             set 
             {
-                if (tarifaBase < 0)
+                if (value >= 0)
                 {
                     tarifaBase = value;
                 }

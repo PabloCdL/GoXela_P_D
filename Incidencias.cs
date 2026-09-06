@@ -69,7 +69,7 @@ namespace GoXela_P__D
             get { return fecha; }
             set
             {
-                if (value <= DateTime.Today)
+                if (value <= DateTime.Now)
                 {
                     fecha = value;
                 }
