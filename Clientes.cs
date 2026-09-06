@@ -31,6 +31,12 @@ namespace GoXela_P__D
             CantidadSolicitudes = cantidadSolicitudes;
         }
 
+        public bool ClienteExistente(string nombreBuscar)
+        {
+            return NombreCompleto.Equals(nombreBuscar, StringComparison.OrdinalIgnoreCase);
+        }
+            
+
         public void MostrarInformacion()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -40,6 +46,7 @@ namespace GoXela_P__D
             Console.WriteLine($"La direccion es: {Direccion}");
             Console.WriteLine($"El correo es: {Correo}");
             Console.WriteLine($"La cantidad de solicitudes es: {CantidadSolicitudes}");
+            Console.ResetColor();  
         }
     }
 }

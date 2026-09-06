@@ -11,7 +11,6 @@ namespace GoXela_P__D
         static void Main(string[] args)
         {
             int op, op1, op2, op3,op4,op5;
-            string codigo; string nombre; string numeroTelefonico; string direccion; string correo; int cantidadSoli;
             List<Clientes> listaClientes = new List<Clientes>();
             do
             {            
@@ -37,6 +36,7 @@ namespace GoXela_P__D
                     {
                         case 1:
                             //Clientes
+                            string codigo; string nombreCliente; string numeroTelefonico; string direccion; string correo; int cantidadSoli;
                             do
                             {
                                 Console.WriteLine("===== CLIENTES =====");
@@ -52,7 +52,7 @@ namespace GoXela_P__D
                                     Console.WriteLine($"Opcion no valida (No es un valor numerico)");
                                 } else
                                 {
-                                    switch(op1)
+                                    switch (op1)
                                     {
                                         case 1:
                                             do
@@ -72,15 +72,15 @@ namespace GoXela_P__D
                                             do
                                             {
                                                 Console.WriteLine($"Ingrese el nombre");
-                                                nombre = Console.ReadLine();
-                                                if (!string.IsNullOrWhiteSpace(nombre) && nombre.Length <= 5)
+                                                nombreCliente = Console.ReadLine();
+                                                if (!string.IsNullOrWhiteSpace(nombreCliente) && nombreCliente.Length <= 50)
                                                 {
                                                     break;
-                                                   
+
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("Código inválido");
+                                                    Console.WriteLine("Nombre inválido");
                                                 }
                                             } while (true);
 
@@ -88,13 +88,13 @@ namespace GoXela_P__D
                                             {
                                                 Console.WriteLine($"Ingrese el numero telefonico");
                                                 numeroTelefonico = Console.ReadLine();
-                                                if (!string.IsNullOrWhiteSpace(numeroTelefonico) && numeroTelefonico.Length <= 5)
+                                                if (!string.IsNullOrWhiteSpace(numeroTelefonico) && numeroTelefonico.Length <= 8)
                                                 {
                                                     break;
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("Código inválido");
+                                                    Console.WriteLine("Numero telefonico inválido");
                                                 }
                                             } while (true);
 
@@ -102,13 +102,13 @@ namespace GoXela_P__D
                                             {
                                                 Console.WriteLine($"Ingrese la dirección");
                                                 direccion = Console.ReadLine();
-                                                if (!string.IsNullOrWhiteSpace(direccion) && direccion.Length <= 5)
+                                                if (!string.IsNullOrWhiteSpace(direccion) && direccion.Length <= 50)
                                                 {
                                                     break;
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("Código inválido");
+                                                    Console.WriteLine("Direccion inválido");
                                                 }
                                             } while (true);
 
@@ -122,38 +122,40 @@ namespace GoXela_P__D
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("Código inválido");
+                                                    Console.WriteLine("Correo inválido");
                                                 }
                                             } while (true);
 
                                             do
                                             {
                                                 Console.WriteLine($"Ingrese la cantidad de solicitudes");
-                                                if(!int.TryParse(Console.ReadLine(), out cantidadSoli))
+                                                if (!int.TryParse(Console.ReadLine(), out cantidadSoli))
                                                 {
                                                     Console.WriteLine($"Dato no valido");
-                                                }else
-                                                { 
-                                                if (cantidadSoli > 0 && cantidadSoli <= 5)
-                                                {
-                                                    break;
                                                 }
                                                 else
                                                 {
-                                                    Console.WriteLine("Cantidad de solicitudes inválida");
-                                                }
+                                                    if (cantidadSoli > 0 && cantidadSoli <= 5)
+                                                    {
+                                                        break;
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.WriteLine("Cantidad de solicitudes inválida");
+                                                    }
                                                 }
                                             } while (true);
 
-                                            listaClientes.Add(new Clientes(codigo, nombre, numeroTelefonico, direccion, correo, cantidadSoli));
+                                            listaClientes.Add(new Clientes(codigo, nombreCliente, numeroTelefonico, direccion, correo, cantidadSoli));
 
                                             break;
                                         case 2:
 
-                                            if(listaClientes.Count == 0)
+                                            if (listaClientes.Count == 0)
                                             {
                                                 Console.WriteLine($"No existen clientes registrados");
-                                            }else
+                                            }
+                                            else
                                             {
                                                 foreach (var item in listaClientes)
                                                 {
@@ -165,8 +167,9 @@ namespace GoXela_P__D
                                             Console.ReadKey();
                                             break;
                                         case 3:
+                                           
 
-                                            break;
+                                    break;
                                         case 4:
                                             break;
                                         case 5:
