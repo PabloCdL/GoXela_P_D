@@ -19,7 +19,7 @@ namespace GoXela_P__D
             get { return codigo; }
             set
             {
-                if (value != null && value.Length <= 5)
+                if (!string.IsNullOrWhiteSpace(value) && value.Length <= 5)
                 {
                     codigo = value;
                 }
@@ -37,7 +37,7 @@ namespace GoXela_P__D
             get { return descripcion; }
             set
             {
-                if (value != null && value.Length <= 50) 
+                if (!string.IsNullOrWhiteSpace(value) && value.Length <= 50) 
                 {
                     descripcion = value;
                 }
@@ -73,7 +73,7 @@ namespace GoXela_P__D
             get { return direccionOrigen; }
             set 
             {
-                if (value != null && value.Length <= 50)
+                if (!string.IsNullOrWhiteSpace(value) && value.Length <= 50)
                 {
                     direccionOrigen = value;
                 }
@@ -91,7 +91,7 @@ namespace GoXela_P__D
             get { return direccionDestino; }
             set 
             {
-                if (value != null && value.Length <= 50)
+                if (!string.IsNullOrWhiteSpace(value) && value.Length <= 50)
                 {
                     direccionDestino = value;
                 }

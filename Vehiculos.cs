@@ -55,7 +55,7 @@ namespace GoXela_P__D
             get { return marca; }
             set 
             {
-                if (value != null && value.Length <= 10)
+                if (!string.IsNullOrWhiteSpace(value) && value.Length <= 10)
                 {
                     marca = value;
                 }
@@ -73,7 +73,7 @@ namespace GoXela_P__D
             get { return modelo; }
             set 
             {
-                if (value != null && value.Length <= 10)
+                if (!string.IsNullOrWhiteSpace(value) && value.Length <= 10)
                 {
                     modelo = value;
                 }

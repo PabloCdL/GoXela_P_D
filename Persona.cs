@@ -15,7 +15,7 @@ namespace GoXela_P__D
             get { return codigo; }
             set
             {
-                if (value != null && value.Length <= 5)
+                if (!string.IsNullOrWhiteSpace(value) && value.Length <= 5)
                 {
                     codigo = value;
                 }
@@ -33,7 +33,7 @@ namespace GoXela_P__D
             get { return nombreCompleto; }
             set 
             {
-                if (value != null && value.Length <= 50)
+                if (!string.IsNullOrWhiteSpace(value) && value.Length <= 50)
                 {
                     nombreCompleto = value;
                 }
@@ -51,7 +51,7 @@ namespace GoXela_P__D
             get { return numeroTelefonico; }
             set 
             {
-                if (value != null && value.Length == 8)
+                if (!string.IsNullOrWhiteSpace(value) && value.Length <= 8)
                 {
                     numeroTelefonico = value;
                 }
@@ -69,7 +69,7 @@ namespace GoXela_P__D
             get { return direccion; }
             set 
             {
-                if (value != null && value.Length <= 50)
+                if (!string.IsNullOrWhiteSpace(value) && value.Length <= 50)
                 {
                     direccion = value;
                 }
@@ -87,7 +87,7 @@ namespace GoXela_P__D
             get { return correo; }
             set 
             {
-                if (value != null && value.Contains("@") && value.Length <= 50)
+                if (!string.IsNullOrWhiteSpace(value) && value.Contains("@") && value.Length <= 50)
                 {
                     correo = value;
                 }

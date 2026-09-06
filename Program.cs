@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
 
 namespace GoXela_P__D
 {
@@ -28,7 +28,7 @@ namespace GoXela_P__D
 
                 if(!int.TryParse(Console.ReadLine(), out op))
                 {
-                    Console.WriteLine($"Dato invalido... Intente de nuevo");
+                    Console.WriteLine($"Dato inválido... Intente de nuevo");
                 }
                 else 
                 {
@@ -49,15 +49,16 @@ namespace GoXela_P__D
                                 
                                 if(!int.TryParse(Console.ReadLine(), out op1))
                                 {
-                                    Console.WriteLine($"Opcion no valida (No es un valor numerico)");
+                                    Console.WriteLine($"Opción no válida (No es un valor numérico)");
                                 } else
                                 {
                                     switch (op1)
                                     {
                                         case 1:
                                             do
-                                            {
-                                                Console.WriteLine($"Ingrese el codigo");
+                                            {  
+                                                Console.WriteLine($"NUEVO CLIENTE");
+                                                Console.WriteLine($"Ingrese el código");
                                                 codigo = Console.ReadLine();
                                                 if (!string.IsNullOrWhiteSpace(codigo) && codigo.Length <= 5)
                                                 {
@@ -116,7 +117,7 @@ namespace GoXela_P__D
                                             {
                                                 Console.WriteLine($"Ingrese el correo");
                                                 correo = Console.ReadLine();
-                                                if (!string.IsNullOrWhiteSpace(correo) && correo.Length <= 5)
+                                                if (!string.IsNullOrWhiteSpace(correo) && correo.Length <= 50 && correo.Contains("@"))
                                                 {
                                                     break;
                                                 }
@@ -167,9 +168,47 @@ namespace GoXela_P__D
                                             Console.ReadKey();
                                             break;
                                         case 3:
-                                           
+                                            //Buscar cliente
+                                            string codBuscar;
+                                            Console.WriteLine($"===== BUSCAR CLIENTE =====");
+                                            do
+                                            {
+                                                Console.WriteLine("Ingrese el código del cliente a buscar: ");
+                                                codBuscar = Console.ReadLine();
+                                                if(!string.IsNullOrWhiteSpace(codBuscar) && codBuscar.Length <= 50)
+                                                {
+                                                    break;
+                                                } else
+                                                {
+                                                    Console.WriteLine($"Dato no valido");
+                                                }
 
-                                    break;
+                                            } while (true); 
+                                            //string codBuscar = Console.ReadLine();
+
+                                            int posBuscada = -1;
+
+                                            for(int i = 0; i < listaClientes.Count ; i++)
+                                            {
+                                                if (listaClientes[i].Codigo == codBuscar)
+                                                {
+                                                    posBuscada = 0;
+                                                    break;
+                                                }
+                                            }
+
+                                            if(posBuscada != -1)
+                                            {
+                                                Console.WriteLine($"Cliente encontrado en la posición: {posBuscada}");
+                                                listaClientes[posBuscada].MostrarInformacion();
+                                            } else
+                                            {
+                                                Console.WriteLine($"El cliente no esta registrado"); 
+                                            }
+
+                                            Console.WriteLine("Presione cualquier tecla para continuar...");
+                                            Console.ReadKey();
+                                            break;
                                         case 4:
                                             break;
                                         case 5:
