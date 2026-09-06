@@ -8,7 +8,7 @@ namespace GoXela_P__D
 {
     public enum EstadoPaquete
     {
-        admitido, encamino, entregado
+        Admitido, EnCamino, Entregado
     }
     internal class Paquete
     {
@@ -65,7 +65,23 @@ namespace GoXela_P__D
                 }
             }
         }
+        private double valorDeclarado;
 
+        public double ValorDeclarado
+        {
+            get { return valorDeclarado; }
+            set
+            {
+                if (value >= 0)
+                {
+                    valorDeclarado = value;
+                }
+                else
+                {
+                    Console.WriteLine("Valor declarado inválido");
+                }
+            }
+        }
         private string direccionOrigen;
 
         public string DireccionOrigen
@@ -110,14 +126,28 @@ namespace GoXela_P__D
             set { estado = value; }
         }
 
-        public Paquete(string codigo, string descripcion, double peso, string direccionOrigen, string direccionDestino, EstadoPaquete estado)
+        public Paquete(string codigo, string descripcion, double peso, double valorDeclarado, string direccionOrigen, string direccionDestino, EstadoPaquete estado)
         {
             Codigo = codigo;
             Descripcion = descripcion;
             Peso = peso;
+            ValorDeclarado = valorDeclarado;
             DireccionOrigen = direccionOrigen;
             DireccionDestino = direccionDestino;
             Estado = estado;
+        }
+        public void MostrarInformacion()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Código: {Codigo}");
+            Console.WriteLine($"Descripción: {Descripcion}");
+            Console.WriteLine($"Peso: {Peso}");
+            Console.WriteLine($"Valor Declarado: Q{ValorDeclarado}");
+            Console.WriteLine($"Dirección Origen: {DireccionOrigen}");
+            Console.WriteLine($"Dirección Destino: {DireccionDestino}");
+            Console.WriteLine($"Estado: {Estado}");
+            Console.WriteLine();
+            Console.ResetColor();
         }
     }
 }

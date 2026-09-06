@@ -24,8 +24,8 @@ namespace GoXela_P__D
             set { cantidadLimite = value; }
         }
 
-        public Documento(string codigo, string descripcion, double peso, string direccionOrigen, string direccionDestino, EstadoPaquete estado)
-            : base(codigo, descripcion, peso, direccionOrigen, direccionDestino, estado)
+        public Documento(string codigo, string descripcion, double peso, double valorDeclarado, string direccionOrigen, string direccionDestino, EstadoPaquete estado)
+            : base(codigo, descripcion, peso, valorDeclarado, direccionOrigen, direccionDestino, estado)
         {
             Precio = 5;
             CantidadLimite = 20;

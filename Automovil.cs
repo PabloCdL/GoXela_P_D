@@ -18,7 +18,7 @@ namespace GoXela_P__D
             get { return placa; }
             set 
             {
-                if (value != null && value.Length <= 10)
+                if (!string.IsNullOrWhiteSpace(value) && value.Length <= 10)
                 {
                     placa = value;
                 }

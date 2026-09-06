@@ -17,6 +17,7 @@ namespace GoXela_P__D
             List<Automovil> listaAutomovil = new List<Automovil>();
             List<Motocicleta> listaMotocicleta = new List<Motocicleta>();
             List<Bicicleta> listaBicicleta = new List<Bicicleta>();
+            List<Paquete> listaPaquetes = new List<Paquete>();
             do
             {            
                 Console.WriteLine($"=========================");
@@ -382,7 +383,7 @@ namespace GoXela_P__D
                                                 }
                                             } while (true);
 
-                                            do
+                                            do 
                                             {
                                                 Console.WriteLine($"Ingrese el nombre");
                                                 nombreClienteR = Console.ReadLine();
@@ -1006,13 +1007,194 @@ namespace GoXela_P__D
                                             Console.ReadKey();
                                             break;
                                         case 4:
+
+                                            Console.WriteLine($"===== ACTUALIZAR INFORMACIÓN =====");
+                                            Console.Write("Ingrese el código del vehiculo a modificar: ");
+                                            string codModificar = Console.ReadLine();
+    
+                                            int posModificar = -1;
+
+                                            for (int i = 0; i < listaVehiculos.Count; i++)
+                                            {
+                                                if (listaVehiculos[i].Codigo == codModificar)
+                                                {
+                                                    posModificar = i;
+                                                    break;
+                                                }
+                                            }
+
+                                            if (posModificar != -1)
+                                            {
+                                                Console.WriteLine("\nVehículo encontrado. Ingrese los nuevos datos:");
+
+                                                string codigoN;
+                                                string marcaN;
+                                                string modeloN;
+                                                string placaN = "";
+                                                double costoN = 0;
+                                                Estado estadoN;
+
+                                                
+                                                do
+                                                {
+                                                    Console.Write("Ingrese el nuevo código: ");
+                                                    codigoN = Console.ReadLine();
+                                                    if (!string.IsNullOrWhiteSpace(codigoN) && codigoN.Length <= 5)
+                                                    {
+                                                        break;
+                                                    }
+                                                    Console.WriteLine("Código inválido");
+                                                } while (true);
+
+                                                
+                                                do
+                                                {
+                                                    Console.Write("Ingrese la nueva marca: ");
+                                                    marcaN = Console.ReadLine();
+                                                    if (!string.IsNullOrWhiteSpace(marcaN) && marcaN.Length <= 10)
+                                                    {
+                                                        break;
+                                                    }
+                                                    Console.WriteLine("Marca inválida");
+                                                } while (true);
+
+                                                
+                                                do
+                                                {
+                                                    Console.Write("Ingrese el nuevo modelo: ");
+                                                    modeloN = Console.ReadLine();
+                                                    if (!string.IsNullOrWhiteSpace(modeloN) && modeloN.Length <= 10)
+                                                    {
+                                                        break;
+                                                    }
+                                                    Console.WriteLine("Modelo inválido");
+                                                } while (true);
+
+
+                                                do
+                                                {
+                                                    Console.WriteLine("Ingrese el nuevo estado:");
+                                                    Console.WriteLine("1. Libre");
+                                                    Console.WriteLine("2. Ocupado");
+                                                    Console.WriteLine("Opción: ");
+                                                    string opcionEstado = Console.ReadLine();
+
+                                                    if (opcionEstado == "1")
+                                                    {
+                                                        estadoN = Estado.Libre;
+                                                        break;
+                                                    }
+                                                    else if (opcionEstado == "2")
+                                                    {
+                                                        estadoN = Estado.Ocupado;
+                                                        break;
+                                                    }
+                                                    Console.WriteLine("Opción no válida. Intente de nuevo.");
+                                                } while (true);
+                                                
+                                                do
+                                                {
+                                                    Console.WriteLine($"Seleccione el nuevo tipo de vehículo:");
+                                                    Console.WriteLine($"1. Automóvil");
+                                                    Console.WriteLine($"2. Motocicleta");
+                                                    Console.WriteLine($"3. Bicicleta");
+                                                    Console.WriteLine($"Opción: ");
+                                                    string tipoVehiculo = Console.ReadLine();
+
+                                                    if (tipoVehiculo == "1")
+                                                    {
+                                                        do
+                                                        {
+                                                            Console.Write("Ingrese la placa del automóvil: ");
+                                                            placaN = Console.ReadLine();
+                                                            if (!string.IsNullOrWhiteSpace(placaN) && placaN.Length <= 10)
+                                                            {
+                                                                break;
+                                                            }
+                                                            Console.WriteLine("Placa inválida.");
+                                                        } while (true);
+
+                                                        costoN = 40.0;
+                                                        
+                                                        listaVehiculos[posModificar] = new Automovil(codigoN, marcaN, modeloN, estadoN, costoN, placaN);
+                                                        Console.WriteLine($"Vehículo actualizado a Automóvil exitosamente");
+                                                        break;
+                                                    }
+                                                    else if (tipoVehiculo == "2") 
+                                                    {
+                                                        do
+                                                        {
+                                                            Console.Write("Ingrese la placa de la motocicleta: ");
+                                                            placaN = Console.ReadLine();
+                                                            if (!string.IsNullOrWhiteSpace(placaN) && placaN.Length <= 10)
+                                                            {
+                                                                break;
+                                                            }
+                                                            Console.WriteLine("Placa inválida.");
+                                                        } while (true);
+
+                                                        costoN = 25.0;
+                                                        
+                                                        listaVehiculos[posModificar] = new Motocicleta(codigoN, marcaN, modeloN, estadoN, costoN, placaN);
+                                                        Console.WriteLine($"Vehículo actualizado a Motocicleta exitosamente");
+                                                        break;
+                                                    }
+                                                    else if (tipoVehiculo == "3") // BICICLETA
+                                                    {
+                                                        costoN = 10.0;
+                                                       
+                                                        listaVehiculos[posModificar] = new Bicicleta(codigoN, marcaN, modeloN, estadoN, costoN);
+                                                        Console.WriteLine($"Vehículo actualizado a Bicicleta exitosamente");
+                                                        break;
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.WriteLine($"Opción de vehículo no válida. Intente de nuevo");
+                                                    }
+                                                } while (true);
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine($"El vehículo no se encuentra registrado.");
+                                            }
+
+                                            Console.WriteLine("Presione cualquier tecla para continuar...");
+                                            Console.ReadKey();
                                             break;
                                         case 5:
-                                            break;
+                                            Console.WriteLine($"===== ELMINAR INFOMRACIÓN =====");
+                                            Console.Write("Ingrese el código del vehiculo a eliminar: ");
+                                            string codEliminar = Console.ReadLine();
+
+                                            int posEliminar = -1;
+
+                                            for (int i = 0; i < listaVehiculos.Count; i++)
+                                            {
+                                                if (listaVehiculos[i].Codigo == codEliminar)
+                                                {
+                                                    posEliminar = i;
+                                                    break;
+                                                }
+                                            }
+
+                                            if (posEliminar != -1)
+                                            {
+                                                listaVehiculos.RemoveAt(posEliminar);
+                                                Console.WriteLine($"Eliminado Correctamente");
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine($"Repartidor no encontrado");
+                                            }
+
+                                            Console.WriteLine($"Presione cualquier tecla para continuar...");
+                                            Console.ReadKey();
+                                            break;                                      
                                         case 6:
+                                            Console.WriteLine($"Saliendo...");
                                             break;
                                         default:
-                                            Console.WriteLine($"Opcion fuera de rango");  
+                                            Console.WriteLine($"Opción fuera de rango");  
                                             break;
                                     }
                                 }
@@ -1039,18 +1221,439 @@ namespace GoXela_P__D
                                     switch (op4)
                                     {
                                         case 1:
+
+                                            string codigoP;
+                                            string descripcionP;
+                                            double pesoP;
+                                            double valorDeclarado;
+                                            string direccionOrigen;
+                                            string direccionDestino;
+
+                                            EstadoPaquete estadoSeleccionado;
+
+                                            do
+                                            {
+                                                Console.WriteLine("Ingrese el código:");
+                                                codigoP = Console.ReadLine();
+
+                                                if (!string.IsNullOrWhiteSpace(codigoP) && codigoP.Length <= 5)
+                                                {
+                                                    break;
+                                                }
+
+                                                Console.WriteLine("Código inválido");
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine("Ingrese la descripción:");
+                                                descripcionP = Console.ReadLine();
+
+                                                if (!string.IsNullOrWhiteSpace(descripcionP) && descripcionP.Length <= 50)
+                                                {
+                                                    break;
+                                                }
+
+                                                Console.WriteLine("Descripción inválida");
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine("Ingrese el peso:");
+
+                                                if (double.TryParse(Console.ReadLine(), out pesoP))
+                                                {
+                                                    if (pesoP > 0)
+                                                    {
+                                                        break;
+                                                    }
+                                                }
+
+                                                Console.WriteLine("Peso inválido");
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine("Ingrese el valor declarado:");
+
+                                                if (double.TryParse(Console.ReadLine(), out valorDeclarado))
+                                                {
+                                                    if (valorDeclarado >= 0)
+                                                    {
+                                                        break;
+                                                    }
+                                                }
+
+                                                Console.WriteLine("Valor declarado inválido");
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine("Ingrese la dirección de origen:");
+
+                                                direccionOrigen = Console.ReadLine();
+
+                                                if (!string.IsNullOrWhiteSpace(direccionOrigen)
+                                                    && direccionOrigen.Length <= 50)
+                                                {
+                                                    break;
+                                                }
+
+                                                Console.WriteLine("Dirección inválida");
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine("Ingrese la dirección de destino:");
+
+                                                direccionDestino = Console.ReadLine();
+
+                                                if (!string.IsNullOrWhiteSpace(direccionDestino)
+                                                    && direccionDestino.Length <= 50)
+                                                {
+                                                    break;
+                                                }
+
+                                                Console.WriteLine("Dirección inválida");
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine("Seleccione el estado:");
+                                                Console.WriteLine("1. Admitido");
+                                                Console.WriteLine("2. En Camino");
+                                                Console.WriteLine("3. Entregado");
+
+                                                string opcionEstado = Console.ReadLine();
+
+                                                if (opcionEstado == "1")
+                                                {
+                                                    estadoSeleccionado = EstadoPaquete.Admitido;
+                                                    break;
+                                                }
+                                                else if (opcionEstado == "2")
+                                                {
+                                                    estadoSeleccionado = EstadoPaquete.EnCamino;
+                                                    break;
+                                                }
+                                                else if (opcionEstado == "3")
+                                                {
+                                                    estadoSeleccionado = EstadoPaquete.Entregado;
+                                                    break;
+                                                }
+
+                                                Console.WriteLine("Opción inválida");
+
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine("Seleccione el tipo de paquete:");
+                                                Console.WriteLine("1. Documento");
+                                                Console.WriteLine("2. Paquete Estándar");
+                                                Console.WriteLine("3. Paquete Frágil");
+                                                Console.WriteLine("4. Paquete Refrigerado");
+
+                                                string tipoPaquete = Console.ReadLine();
+
+                                                if (tipoPaquete == "1")
+                                                {
+                                                    listaPaquetes.Add(
+                                                        new Documento(
+                                                            codigoP, descripcionP, pesoP, valorDeclarado, direccionOrigen, direccionDestino, estadoSeleccionado
+                                                        ));
+
+                                                    Console.WriteLine("Documento registrado correctamente");
+                                                    break;
+                                                }
+                                                else if (tipoPaquete == "2")
+                                                {
+                                                    listaPaquetes.Add(
+                                                        new PaqueteEstandar(
+                                                            codigoP, descripcionP, pesoP, valorDeclarado, direccionOrigen, direccionDestino, estadoSeleccionado
+                                                        ));
+
+                                                    Console.WriteLine("Paquete estándar registrado correctamente");
+                                                    break;
+                                                }
+                                                else if (tipoPaquete == "3")
+                                                {
+                                                    listaPaquetes.Add(
+                                                        new PaqueteFragil(codigoP, descripcionP, pesoP, valorDeclarado, direccionOrigen, direccionDestino, estadoSeleccionado
+                                                        ));
+
+                                                    Console.WriteLine("Paquete frágil registrado correctamente");
+                                                    break;
+                                                }
+                                                else if (tipoPaquete == "4")
+                                                {
+                                                    listaPaquetes.Add(
+                                                        new PaqueteRefrigerado(codigoP, descripcionP, pesoP, valorDeclarado, direccionOrigen, direccionDestino, estadoSeleccionado
+                                                        ));
+
+                                                    Console.WriteLine("Paquete refrigerado registrado correctamente");
+                                                    break;
+                                                }
+
+                                                Console.WriteLine("Opción inválida");
+
+                                            } while (true);
+
+                                            Console.WriteLine("Presione cualquier tecla para continuar...");
+                                            Console.ReadKey();
                                             break;
+
                                         case 2:
+
+                                            Console.WriteLine("===== PAQUETES =====");
+
+                                            if (listaPaquetes.Count == 0)
+                                            {
+                                                Console.WriteLine("No existen paquetes registrados");
+                                            }
+                                            else
+                                            {
+                                                foreach (var item in listaPaquetes)
+                                                {
+                                                    item.MostrarInformacion();
+                                                }
+                                            }
+
+                                            Console.WriteLine("Presione cualquier tecla para continuar...");
+                                            Console.ReadKey();
                                             break;
+
                                         case 3:
+
+                                            string codBuscar;
+
+                                            Console.WriteLine("===== BUSCAR PAQUETE =====");
+
+                                            do
+                                            {
+                                                Console.WriteLine("Ingrese el código del paquete:");
+
+                                                codBuscar = Console.ReadLine();
+
+                                                if (!string.IsNullOrWhiteSpace(codBuscar)
+                                                    && codBuscar.Length <= 5)
+                                                {
+                                                    break;
+                                                }
+
+                                                Console.WriteLine("Código inválido");
+
+                                            } while (true);
+
+                                            int posBuscada = -1;
+
+                                            for (int i = 0; i < listaPaquetes.Count; i++)
+                                            {
+                                                if (listaPaquetes[i].Codigo == codBuscar)
+                                                {
+                                                    posBuscada = i;
+                                                    break;
+                                                }
+                                            }
+
+                                            if (posBuscada != -1)
+                                            {
+                                                Console.WriteLine($"Paquete encontrado en la posición: {posBuscada}");
+
+                                                listaPaquetes[posBuscada].MostrarInformacion();
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Paquete no encontrado");
+                                            }
+
+                                            Console.WriteLine("Presione cualquier tecla para continuar...");
+                                            Console.ReadKey();
                                             break;
+
                                         case 4:
+
+                                            Console.WriteLine("===== ACTUALIZAR PAQUETE =====");
+
+                                            Console.Write("Ingrese el código del paquete a modificar: ");
+
+                                            string codModificar = Console.ReadLine();
+
+                                            int posModificar = -1;
+
+                                            for (int i = 0; i < listaPaquetes.Count; i++)
+                                            {
+                                                if (listaPaquetes[i].Codigo == codModificar)
+                                                {
+                                                    posModificar = i;
+                                                    break;
+                                                }
+                                            }
+
+                                            if (posModificar != -1)
+                                            {
+                                                Console.WriteLine("Paquete encontrado. Ingrese los nuevos datos:");
+
+                                                do
+                                                {
+                                                    Console.WriteLine("Nueva descripción:");
+
+                                                    string nuevaDescripcion = Console.ReadLine();
+
+                                                    if (!string.IsNullOrWhiteSpace(nuevaDescripcion)
+                                                        && nuevaDescripcion.Length <= 50)
+                                                    {
+                                                        listaPaquetes[posModificar].Descripcion = nuevaDescripcion;
+                                                        break;
+                                                    }
+
+                                                    Console.WriteLine("Descripción inválida");
+
+                                                } while (true);
+
+                                                do
+                                                {
+                                                    Console.WriteLine("Nuevo peso:");
+
+                                                    if (double.TryParse(Console.ReadLine(), out double nuevoPeso)
+                                                        && nuevoPeso > 0)
+                                                    {
+                                                        listaPaquetes[posModificar].Peso = nuevoPeso;
+                                                        break;
+                                                    }
+
+                                                    Console.WriteLine("Peso inválido");
+
+                                                } while (true);
+
+                                                do
+                                                {
+                                                    Console.WriteLine("Nuevo valor declarado:");
+
+                                                    if (double.TryParse(Console.ReadLine(), out double nuevoValor)
+                                                        && nuevoValor >= 0)
+                                                    {
+                                                        listaPaquetes[posModificar].ValorDeclarado = nuevoValor;
+                                                        break;
+                                                    }
+
+                                                    Console.WriteLine("Valor declarado inválido");
+
+                                                } while (true);
+
+                                                do
+                                                {
+                                                    Console.WriteLine("Nueva dirección origen:");
+
+                                                    string nuevaOrigen = Console.ReadLine();
+
+                                                    if (!string.IsNullOrWhiteSpace(nuevaOrigen)
+                                                        && nuevaOrigen.Length <= 50)
+                                                    {
+                                                        listaPaquetes[posModificar].DireccionOrigen = nuevaOrigen;
+                                                        break;
+                                                    }
+
+                                                    Console.WriteLine("Dirección inválida");
+
+                                                } while (true);
+
+                                                do
+                                                {
+                                                    Console.WriteLine("Nueva dirección destino:");
+
+                                                    string nuevaDestino = Console.ReadLine();
+
+                                                    if (!string.IsNullOrWhiteSpace(nuevaDestino)
+                                                        && nuevaDestino.Length <= 50)
+                                                    {
+                                                        listaPaquetes[posModificar].DireccionDestino = nuevaDestino;
+                                                        break;
+                                                    }
+
+                                                    Console.WriteLine("Dirección inválida");
+
+                                                } while (true);
+
+                                                do
+                                                {
+                                                    Console.WriteLine("Seleccione el nuevo estado:");
+                                                    Console.WriteLine("1. Admitido");
+                                                    Console.WriteLine("2. En Camino");
+                                                    Console.WriteLine("3. Entregado");
+
+                                                    string opcionEstado = Console.ReadLine();
+
+                                                    if (opcionEstado == "1")
+                                                    {
+                                                        listaPaquetes[posModificar].Estado = EstadoPaquete.Admitido;
+                                                        break;
+                                                    }
+                                                    else if (opcionEstado == "2")
+                                                    {
+                                                        listaPaquetes[posModificar].Estado = EstadoPaquete.EnCamino;
+                                                        break;
+                                                    }
+                                                    else if (opcionEstado == "3")
+                                                    {
+                                                        listaPaquetes[posModificar].Estado = EstadoPaquete.Entregado;
+                                                        break;
+                                                    }
+
+                                                    Console.WriteLine("Opción inválida");
+
+                                                } while (true);
+
+                                                Console.WriteLine("¡Paquete actualizado exitosamente!");
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Paquete no encontrado.");
+                                            }
+
+                                            Console.WriteLine("Presione cualquier tecla para continuar...");
+                                            Console.ReadKey();
                                             break;
+
                                         case 5:
+
+                                            Console.WriteLine("===== ELIMINAR PAQUETE =====");
+
+                                            Console.Write("Ingrese el código del paquete a eliminar: ");
+
+                                            string codEliminar = Console.ReadLine();
+
+                                            int posEliminar = -1;
+
+                                            for (int i = 0; i < listaPaquetes.Count; i++)
+                                            {
+                                                if (listaPaquetes[i].Codigo == codEliminar)
+                                                {
+                                                    posEliminar = i;
+                                                    break;
+                                                }
+                                            }
+
+                                            if (posEliminar != -1)
+                                            {
+                                                listaPaquetes.RemoveAt(posEliminar);
+
+                                                Console.WriteLine("Paquete eliminado correctamente");
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Paquete no encontrado");
+                                            }
+
+                                            Console.WriteLine("Presione cualquier tecla para continuar...");
+                                            Console.ReadKey();
                                             break;
+
                                         case 6:
+                                            Console.WriteLine("Saliendo...");
                                             break;
                                         default:
+                                            Console.WriteLine("Opción inválida");
                                             break;
                                     }
                                 }
