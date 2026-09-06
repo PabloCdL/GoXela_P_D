@@ -817,8 +817,7 @@ namespace GoXela_P__D
                                             string codigoV; string marca; string modelo; double costo = 0; string placa = "";
                                             Estado estadoSeleccionado;
                                             Console.WriteLine($"===== REGISTRO DE VEHÍCULOS =====");
-                                                                                      
-
+                                             
                                             do
                                             {
                                                 Console.WriteLine($"Ingrese el código: ");
