@@ -112,6 +112,19 @@ namespace GoXela_P__D
             get { return estado; }
             set { estado = value; }
         }
+        private int cantidadUsos;
+
+        public int CantidadUsos
+        {
+            get { return cantidadUsos; }
+            set
+            {
+                if (value >= 0)
+                {
+                    cantidadUsos = value;
+                }
+            }
+        }
 
         public virtual void MostrarInformacion()
         {
@@ -134,6 +147,7 @@ namespace GoXela_P__D
             Modelo = modelo;
             Costo = costo;
             Estado = estado;
+            CantidadUsos = 0;
         }
     }
 }

@@ -81,7 +81,6 @@ namespace GoXela_P__D
             Console.WriteLine($"Disponibilidad: {Disponibilidad}");
             Console.WriteLine($"Cantidad de entregas: {cantidadEntregas}");
             Console.WriteLine($"Calificacion: {calificacion}");
-            Console.WriteLine();
             Console.ResetColor();
         }
 

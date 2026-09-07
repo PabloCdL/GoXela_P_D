@@ -208,6 +208,7 @@ namespace GoXela_P__D
             Repartidor.CantidadEntregas = Repartidor.CantidadEntregas + 1;
 
             Vehiculo.Estado = GoXela_P__D.Estado.Ocupado;
+            Vehiculo.CantidadUsos++;
 
         }
 

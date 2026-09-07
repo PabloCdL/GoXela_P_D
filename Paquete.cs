@@ -146,7 +146,6 @@ namespace GoXela_P__D
             Console.WriteLine($"Dirección Origen: {DireccionOrigen}");
             Console.WriteLine($"Dirección Destino: {DireccionDestino}");
             Console.WriteLine($"Estado: {Estado}");
-            Console.WriteLine();
             Console.ResetColor();
         }
     }

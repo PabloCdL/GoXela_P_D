@@ -85,7 +85,7 @@ namespace GoXela_P__D
                 return;
             }
 
-            Console.WriteLine("\nRepartidores disponibles:");
+            Console.WriteLine("Repartidores disponibles:");
             for (int i = 0; i < repartidoresLibres.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. Código: {repartidoresLibres[i].Codigo} | Nombre: {repartidoresLibres[i].NombreCompleto}");
@@ -312,7 +312,7 @@ namespace GoXela_P__D
             
             if (!encontrada)
             {
-                Console.WriteLine("\nNo se encontró ninguna entrega con los criterios ingresados.");
+                Console.WriteLine("No se encontró ninguna entrega con los criterios ingresados.");
             }
         }
     }

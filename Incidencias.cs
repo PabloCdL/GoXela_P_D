@@ -115,5 +115,15 @@ namespace GoXela_P__D
             Estado = estado;
             AccionTomada = accionTomada;
         }
+        public void MostrarInformacion()
+        {
+            Console.WriteLine($"Código: {Codigo}");
+            Console.WriteLine($"Tipo: {Tipo}");
+            Console.WriteLine($"Descripción: {Descripcion}");
+            Console.WriteLine($"Fecha: {Fecha}");
+            Console.WriteLine($"Estado: {Estado}");
+            Console.WriteLine($"Acción Tomada: {AccionTomada}");
+            Console.ReadKey();
+        }
     }
 }

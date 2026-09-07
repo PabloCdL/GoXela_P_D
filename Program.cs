@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks; 
@@ -8,6 +7,16 @@ namespace GoXela_P__D
 {
     internal class Program
     {
+        public static double SumarIngresosRecursivo(List<Entregas> lista, int indice)
+        {
+            if (indice >= lista.Count)
+            {
+                return 0;
+            }
+
+            return lista[indice].Total +
+                   SumarIngresosRecursivo(lista, indice + 1);
+        }
         static void Main(string[] args)
         {
             int op, op1, op2, op3,op4,op5;
@@ -19,11 +28,16 @@ namespace GoXela_P__D
             List<Bicicleta> listaBicicleta = new List<Bicicleta>();
             List<Paquete> listaPaquetes = new List<Paquete>();
             List<Entregas> listaEntregas = new List<Entregas>();
+            List<Incidencias> listaIncidencias = new List<Incidencias>();
+
             do
-            {            
-                Console.WriteLine($"=========================");
-                Console.WriteLine($"      GOXELA DELIVERY    ");
-                Console.WriteLine($"=========================");
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"============================");
+                Console.WriteLine($"       GOXELA DELIVERY    ");
+                Console.WriteLine($"============================");
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"1. Gestión de clientes");
                 Console.WriteLine($"2. Gestión de repartidores");
                 Console.WriteLine($"3. Gestión de vehículos");
@@ -32,6 +46,8 @@ namespace GoXela_P__D
                 Console.WriteLine($"6. Gestión de incidencias");
                 Console.WriteLine($"7. Reportes");
                 Console.WriteLine($"8. Salir");
+                Console.Write("-> Seleccione una opción: ");
+                Console.ResetColor();
 
                 if(!int.TryParse(Console.ReadLine(), out op))
                 {
@@ -43,10 +59,14 @@ namespace GoXela_P__D
                     {
                         case 1:
                             //Clientes
+                            Console.Clear();
                             string codigo; string nombreCliente; string numeroTelefonico; string direccion; string correo; int cantidadSoli;
                             do
                             {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Blue;
                                 Console.WriteLine("===== CLIENTES =====");
+                                Console.ResetColor();
                                 Console.WriteLine($"1. Nuevo Cliente");
                                 Console.WriteLine($"2. Mostrar Clientes");
                                 Console.WriteLine($"3. Buscar Cliente");
@@ -152,6 +172,7 @@ namespace GoXela_P__D
                                                         Console.WriteLine("Cantidad de solicitudes inválida");
                                                     }
                                                 }
+                                                Console.WriteLine("¡Cliente guardado exitosamente!");
                                             } while (true);
 
                                             listaClientes.Add(new Clientes(codigo, nombreCliente, numeroTelefonico, direccion, correo, cantidadSoli));
@@ -187,7 +208,7 @@ namespace GoXela_P__D
                                                     break;
                                                 } else
                                                 {
-                                                    Console.WriteLine($"Dato no valido");
+                                                    Console.WriteLine($"Dato no válido");
                                                 }
 
                                             } while (true); 
@@ -206,7 +227,7 @@ namespace GoXela_P__D
 
                                             if(posBuscada != -1)
                                             {
-                                                Console.WriteLine($"Cliente encontrado en la posición: {posBuscada}");
+                                                Console.WriteLine($"Cliente encontrado en la posición: {posBuscada + 1}");
                                                 listaClientes[posBuscada].MostrarInformacion();
                                             } else
                                             {
@@ -352,7 +373,10 @@ namespace GoXela_P__D
                             Disponibilidad disponibilidadSeleccionada;
                             do
                             {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("===== REPARTIDORES =====");
+                                Console.ResetColor();
                                 Console.WriteLine($"1. Nuevo Repartidor");
                                 Console.WriteLine($"2. Mostrar Repartidores");
                                 Console.WriteLine($"3. Buscar Repartidor");
@@ -595,12 +619,12 @@ namespace GoXela_P__D
 
                                             if (posBuscada != -1)
                                             {
-                                                Console.WriteLine($"Cliente encontrado en la posición: {posBuscada}");
+                                                Console.WriteLine($"Repartidor encontrado en la posición: {posBuscada + 1}");
                                                 listaRepartidores[posBuscada].MostrarInformacion();
                                             }
                                             else
                                             {
-                                                Console.WriteLine($"El cliente no esta registrado");
+                                                Console.WriteLine($"El repartidor no esta registrado");
                                             }
 
                                             Console.WriteLine("Presione cualquier tecla para continuar...");
@@ -799,7 +823,10 @@ namespace GoXela_P__D
                             //Vehículos
                             do
                             {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkYellow;
                                 Console.WriteLine("===== VEHICULOS =====");
+                                Console.ResetColor();
                                 Console.WriteLine($"1. Nuevo Vehículo");
                                 Console.WriteLine($"2. Mostrar Vehículos");
                                 Console.WriteLine($"3. Buscar Vehiculo");
@@ -995,7 +1022,7 @@ namespace GoXela_P__D
 
                                             if (posBuscada != -1)
                                             {
-                                                Console.WriteLine($"Vehiculo encontrado en la posición: {posBuscada}");
+                                                Console.WriteLine($"Vehiculo encontrado en la posición: {posBuscada + 1}");
                                                 listaVehiculos[posBuscada].MostrarInformacion();
                                             }
                                             else
@@ -1204,7 +1231,10 @@ namespace GoXela_P__D
                             //Paquetes
                             do
                             {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Magenta;
                                 Console.WriteLine("===== PAQUETES =====");
+                                Console.ResetColor();
                                 Console.WriteLine($"1. Nuevo Paquete");
                                 Console.WriteLine($"2. Mostrar Paquetes");
                                 Console.WriteLine($"3. Buscar Paquete");
@@ -1458,7 +1488,7 @@ namespace GoXela_P__D
 
                                             if (posBuscada != -1)
                                             {
-                                                Console.WriteLine($"Paquete encontrado en la posición: {posBuscada}");
+                                                Console.WriteLine($"Paquete encontrado en la posición: {posBuscada + 1}");
 
                                                 listaPaquetes[posBuscada].MostrarInformacion();
                                             }
@@ -1663,7 +1693,10 @@ namespace GoXela_P__D
                             //Entregas 
                             do
                             {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkCyan;
                                 Console.WriteLine("===== ENTREGAS =====");
+                                Console.ResetColor();
                                 Console.WriteLine($"1. Nueva Entrega");
                                 Console.WriteLine($"2. Mostrar Entregas");
                                 Console.WriteLine($"3. Buscar Entrega");
@@ -1710,15 +1743,579 @@ namespace GoXela_P__D
                             } while (op5 != 5);
                             break;
                         case 6:
-                            //Incidencias
+
+                            int op6;
+
+                            do
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("===== INCIDENCIAS =====");
+                                Console.ResetColor();
+                                Console.WriteLine("1. Nueva Incidencia");
+                                Console.WriteLine("2. Mostrar Incidencias");
+                                Console.WriteLine("3. Buscar Incidencia");
+                                Console.WriteLine("4. Actualizar Incidencia");
+                                Console.WriteLine("5. Eliminar Incidencia");
+                                Console.WriteLine("6. Salir");
+
+                                if (!int.TryParse(Console.ReadLine(), out op6))
+                                {
+                                    Console.WriteLine("Opción inválida");
+                                }
+                                else
+                                {
+                                    switch (op6)
+                                    {
+                                        case 1:
+
+                                            string codigoI;
+                                            string descripcionI;
+                                            string accionI;
+
+                                            TipoIncidencia tipoI;
+                                            EstadoIncidencia estadoI;
+
+                                            do
+                                            {
+                                                Console.WriteLine("Ingrese el código:");
+
+                                                codigoI = Console.ReadLine();
+
+                                                if (!string.IsNullOrWhiteSpace(codigoI)
+                                                    && codigoI.Length <= 5)
+                                                {
+                                                    break;
+                                                }
+
+                                                Console.WriteLine("Código inválido");
+
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine("Ingrese la descripción:");
+
+                                                descripcionI = Console.ReadLine();
+
+                                                if (!string.IsNullOrWhiteSpace(descripcionI)
+                                                    && descripcionI.Length <= 50)
+                                                {
+                                                    break;
+                                                }
+
+                                                Console.WriteLine("Descripción inválida");
+
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine("Seleccione el tipo:");
+                                                Console.WriteLine("1. Cliente Ausente");
+                                                Console.WriteLine("2. Dirección Incorrecta");
+                                                Console.WriteLine("3. Paquete Dañado");
+                                                Console.WriteLine("4. Vehículo Averiado");
+                                                Console.WriteLine("5. Retraso");
+                                                Console.WriteLine("6. Problemas Climáticos");
+                                                Console.WriteLine("7. Rechazo de Recepción");
+
+                                                string opcion = Console.ReadLine();
+
+                                                if (opcion == "1")
+                                                {
+                                                    tipoI = TipoIncidencia.ClienteAusente;
+                                                    break;
+                                                }
+                                                else if (opcion == "2")
+                                                {
+                                                    tipoI = TipoIncidencia.DireccionIncorrecta;
+                                                    break;
+                                                }
+                                                else if (opcion == "3")
+                                                {
+                                                    tipoI = TipoIncidencia.PaqueteDanado;
+                                                    break;
+                                                }
+                                                else if (opcion == "4")
+                                                {
+                                                    tipoI = TipoIncidencia.VehiculoAveriado;
+                                                    break;
+                                                }
+                                                else if (opcion == "5")
+                                                {
+                                                    tipoI = TipoIncidencia.Retraso;
+                                                    break;
+                                                }
+                                                else if (opcion == "6")
+                                                {
+                                                    tipoI = TipoIncidencia.ProblemasClimaticos;
+                                                    break;
+                                                }
+                                                else if (opcion == "7")
+                                                {
+                                                    tipoI = TipoIncidencia.RechazoRecepcion;
+                                                    break;
+                                                }
+
+                                                Console.WriteLine("Opción inválida");
+
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine("Estado:");
+                                                Console.WriteLine("1. Pendiente");
+                                                Console.WriteLine("2. Resuelta");
+
+                                                string opcion = Console.ReadLine();
+
+                                                if (opcion == "1")
+                                                {
+                                                    estadoI = EstadoIncidencia.Pendiente;
+                                                    break;
+                                                }
+                                                else if (opcion == "2")
+                                                {
+                                                    estadoI = EstadoIncidencia.Resuelta;
+                                                    break;
+                                                }
+
+                                                Console.WriteLine("Opción inválida");
+
+                                            } while (true);
+
+                                            do
+                                            {
+                                                Console.WriteLine("Ingrese la acción tomada:");
+
+                                                accionI = Console.ReadLine();
+
+                                                if (!string.IsNullOrWhiteSpace(accionI)
+                                                    && accionI.Length <= 50)
+                                                {
+                                                    break;
+                                                }
+
+                                                Console.WriteLine("Acción inválida");
+
+                                            } while (true);
+
+                                            listaIncidencias.Add(
+                                                new Incidencias(
+                                                    codigoI,
+                                                    tipoI,
+                                                    descripcionI,
+                                                    DateTime.Now,
+                                                    estadoI,
+                                                    accionI
+                                                ));
+
+                                            Console.WriteLine("Incidencia registrada correctamente");
+
+                                            Console.ReadKey();
+
+                                            break;
+
+                                        case 2:
+
+                                            if (listaIncidencias.Count == 0)
+                                            {
+                                                Console.WriteLine("No existen incidencias registradas");
+                                            }
+                                            else
+                                            {
+                                                foreach (var item in listaIncidencias)
+                                                {
+                                                    item.MostrarInformacion();
+                                                }
+                                            }
+
+                                            Console.ReadKey();
+
+                                            break;
+
+                                        case 3:
+
+                                            Console.WriteLine("Ingrese el código:");
+
+                                            string buscar = Console.ReadLine();
+
+                                            bool encontrada = false;
+
+                                            foreach (var item in listaIncidencias)
+                                            {
+                                                if (item.Codigo == buscar)
+                                                {
+                                                    item.MostrarInformacion();
+
+                                                    encontrada = true;
+
+                                                    break;
+                                                }
+                                            }
+
+                                            if (!encontrada)
+                                            {
+                                                Console.WriteLine("Incidencia no encontrada");
+                                            }
+
+                                            Console.ReadKey();
+
+                                            break;
+
+                                        case 4:
+
+                                            Console.WriteLine("Ingrese el código:");
+
+                                            string codigoModificar = Console.ReadLine();
+
+                                            foreach (var item in listaIncidencias)
+                                            {
+                                                if (item.Codigo == codigoModificar)
+                                                {
+                                                    Console.WriteLine("Nueva descripción:");
+
+                                                    item.Descripcion = Console.ReadLine();
+
+                                                    Console.WriteLine("1. Pendiente");
+                                                    Console.WriteLine("2. Resuelta");
+
+                                                    string opEstado = Console.ReadLine();
+
+                                                    if (opEstado == "1")
+                                                    {
+                                                        item.Estado = EstadoIncidencia.Pendiente;
+                                                    }
+                                                    else if (opEstado == "2")
+                                                    {
+                                                        item.Estado = EstadoIncidencia.Resuelta;
+                                                    }
+
+                                                    Console.WriteLine("Incidencia actualizada");
+
+                                                    break;
+                                                }
+                                            }
+
+                                            Console.ReadKey();
+
+                                            break;
+
+                                        case 5:
+
+                                            Console.WriteLine("Ingrese el código:");
+
+                                            string codigoEliminar = Console.ReadLine();
+
+                                            int posEliminar = -1;
+
+                                            for (int i = 0; i < listaIncidencias.Count; i++)
+                                            {
+                                                if (listaIncidencias[i].Codigo == codigoEliminar)
+                                                {
+                                                    posEliminar = i;
+                                                    break;
+                                                }
+                                            }
+
+                                            if (posEliminar != -1)
+                                            {
+                                                listaIncidencias.RemoveAt(posEliminar);
+
+                                                Console.WriteLine("Incidencia eliminada");
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Incidencia no encontrada");
+                                            }
+
+                                            Console.ReadKey();
+
+                                            break;
+
+                                        case 6:
+                                            Console.WriteLine("Saliendo...");
+                                            break;
+
+                                        default:
+                                            Console.WriteLine("Opción inválida");
+                                            break;
+                                    }
+                                }
+
+                            } while (op6 != 6);
+
                             break;
-                        case 7: 
-                            //Reportes
+                        case 7:
+
+                            int op7;
+                            do
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                                Console.WriteLine("===== REPORTES =====");
+                                Console.ResetColor();
+                                Console.WriteLine("1. Entregas activas");
+                                Console.WriteLine("2. Entregas finalizadas");
+                                Console.WriteLine("3. Entregas canceladas");
+                                Console.WriteLine("4. Entregas con incidencias");
+                                Console.WriteLine("5. Repartidores disponibles");
+                                Console.WriteLine("6. Repartidor con más entregas");
+                                Console.WriteLine("7. Vehículo más utilizado");
+                                Console.WriteLine("8. Cantidad de paquetes por tipo");
+                                Console.WriteLine("9. Total de ingresos");
+                                Console.WriteLine("10. Entrega con mayor costo");
+                                Console.WriteLine("11. Salir");
+
+                                if (!int.TryParse(Console.ReadLine(), out op7))
+                                {
+                                    Console.WriteLine("Opción inválida");
+                                }
+                                else
+                                {
+                                    switch (op7)
+                                    {
+                                        case 1:
+
+                                            Console.WriteLine("===== ENTREGAS ACTIVAS =====");
+
+                                            bool encontrado = false;
+
+                                            foreach (var item in listaEntregas)
+                                            {
+                                                if (item.Estado == EstadoEntrega.Pendiente ||
+                                                    item.Estado == EstadoEntrega.EnProceso)
+                                                {
+                                                    item.MostrarInformacion();
+                                                    encontrado = true;
+                                                }
+                                            }
+
+                                            if (!encontrado)
+                                            {
+                                                Console.WriteLine("No existen entregas activas.");
+                                            }
+
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 2:
+
+                                            Console.WriteLine("===== ENTREGAS FINALIZADAS =====");
+
+                                            foreach (var item in listaEntregas)
+                                            {
+                                                if (item.Estado == EstadoEntrega.Entregado)
+                                                {
+                                                    item.MostrarInformacion();
+                                                }
+                                            }
+
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 3:
+
+                                            Console.WriteLine("===== ENTREGAS CANCELADAS =====");
+
+                                            foreach (var item in listaEntregas)
+                                            {
+                                                if (item.Estado == EstadoEntrega.Cancelado)
+                                                {
+                                                    item.MostrarInformacion();
+                                                }
+                                            }
+
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 4:
+
+                                            Console.WriteLine("===== ENTREGAS CON INCIDENCIAS =====");
+
+                                            if (listaIncidencias.Count == 0)
+                                            {
+                                                Console.WriteLine("No existen incidencias registradas.");
+                                            }
+                                            else
+                                            {
+                                                foreach (var item in listaIncidencias)
+                                                {
+                                                    item.MostrarInformacion();
+                                                }
+                                            }
+
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 5:
+
+                                            Console.WriteLine("===== REPARTIDORES DISPONIBLES =====");
+
+                                            foreach (var item in listaRepartidores)
+                                            {
+                                                if (item.Disponibilidad == Disponibilidad.Disponible)
+                                                {
+                                                    item.MostrarInformacion();
+                                                }
+                                            }
+
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 6:
+
+                                            Console.WriteLine("===== REPARTIDOR CON MÁS ENTREGAS =====");
+
+                                            if (listaRepartidores.Count > 0)
+                                            {
+                                                Repartidores mejor = listaRepartidores[0];
+
+                                                foreach (var item in listaRepartidores)
+                                                {
+                                                    if (item.CantidadEntregas > mejor.CantidadEntregas)
+                                                    {
+                                                        mejor = item;
+                                                    }
+                                                }
+
+                                                mejor.MostrarInformacion();
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("No existen repartidores registrados.");
+                                            }
+
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 7:
+                                            Console.Clear();
+
+                                            Console.WriteLine("===== VEHÍCULO MÁS UTILIZADO =====");
+
+                                            if (listaVehiculos.Count > 0)
+                                            {
+                                                Vehiculos vehiculo = listaVehiculos[0];
+
+                                                foreach (var item in listaVehiculos)
+                                                {
+                                                    if (item.CantidadUsos > vehiculo.CantidadUsos)
+                                                    {
+                                                        vehiculo = item;
+                                                    }
+                                                }
+
+                                                vehiculo.MostrarInformacion();
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("No existen vehículos registrados.");
+                                            }
+
+                                            Console.WriteLine("Presione una tecla para continuar...");
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 8:
+
+                                            Console.WriteLine("===== CANTIDAD DE PAQUETES POR TIPO =====");
+
+                                            int documentos = 0;
+                                            int estandar = 0;
+                                            int fragiles = 0;
+                                            int refrigerados = 0;
+
+                                            foreach (var item in listaPaquetes)
+                                            {
+                                                if (item is Documento)
+                                                {
+                                                    documentos++;
+                                                }
+                                                else if (item is PaqueteEstandar)
+                                                {
+                                                    estandar++;
+                                                }
+                                                else if (item is PaqueteFragil)
+                                                {
+                                                    fragiles++;
+                                                }
+                                                else if (item is PaqueteRefrigerado)
+                                                {
+                                                    refrigerados++;
+                                                }
+                                            }
+
+                                            Console.WriteLine($"Documentos: {documentos}");
+                                            Console.WriteLine($"Paquetes Estándar: {estandar}");
+                                            Console.WriteLine($"Paquetes Frágiles: {fragiles}");
+                                            Console.WriteLine($"Paquetes Refrigerados: {refrigerados}");
+
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 9:
+
+                                            Console.WriteLine("===== TOTAL DE INGRESOS =====");
+
+                                            double ingresos = SumarIngresosRecursivo(listaEntregas, 0);
+
+                                            Console.WriteLine($"Total de ingresos: Q{ingresos}");
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 10:
+
+                                            Console.WriteLine("===== ENTREGA CON MAYOR COSTO =====");
+
+                                            if (listaEntregas.Count > 0)
+                                            {
+                                                Entregas mayor = listaEntregas[0];
+
+                                                foreach (var item in listaEntregas)
+                                                {
+                                                    if (item.Total > mayor.Total)
+                                                    {
+                                                        mayor = item;
+                                                    }
+                                                }
+
+                                                mayor.MostrarInformacion();
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("No existen entregas registradas.");
+                                            }
+
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 11:
+
+                                            Console.WriteLine("Saliendo...");
+                                            break;
+
+                                        default:
+
+                                            Console.WriteLine("Opción inválida");
+                                            break;
+                                    }
+                                }
+
+                            } while (op7 != 11);
                             break;
+
                         case 8:
-                            //Salir
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("=======================================================================");
+                            Console.WriteLine("Gracias por preferirnos. GoXela siempre a su servicio, vuelva pronto...");
+                            Console.WriteLine("=======================================================================");
+                            Console.ResetColor();
                             break;
+
                         default:
+                            Console.WriteLine("Opción fuera de rango. Intente de nuevo...");
                             break;
                     }
                 }
