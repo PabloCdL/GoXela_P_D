@@ -38,7 +38,7 @@ namespace GoXela_P__D
         }
 
 
-        public Automovil(string codigo, string marca, string modelo, Estado estado, double precio, string placa) : base(codigo, 80, marca, modelo, precio, estado)
+        public Automovil(string codigo, string marca, string modelo, Estado estado, double precio, string placa) : base(codigo, 500, marca, modelo, precio, estado)
         {
             Placa = placa;
         }

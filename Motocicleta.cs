@@ -35,7 +35,7 @@ namespace GoXela_P__D
             Console.WriteLine($"Placa: {Placa}");
             Console.ResetColor();
         }
-        public Motocicleta(string codigo, string marca, string modelo, Estado estado, double precio, string placa) : base(codigo, 30, marca, modelo, precio, estado)
+        public Motocicleta(string codigo, string marca, string modelo, Estado estado, double precio, string placa) : base(codigo, 50, marca, modelo, precio, estado)
         {
             Placa = placa;
         }
