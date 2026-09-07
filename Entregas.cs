@@ -198,8 +198,36 @@ namespace GoXela_P__D
             TipoServicio = tipoServicio;
             Estado = estado;
             TarifaBase = tarifaBase;
-            Recargos = recargos;
-            Total = total;
-        }  
+            Recargos = recargos; 
+
+            Total = TarifaBase + Recargos;
+
+
+            Paquete.Estado = EstadoPaquete.EnCamino;
+            Repartidor.Disponibilidad = Disponibilidad.Nodisponible;
+            Repartidor.CantidadEntregas = Repartidor.CantidadEntregas + 1;
+
+            Vehiculo.Estado = GoXela_P__D.Estado.Ocupado;
+
+        }
+
+        public void MostrarInformacion()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"===== DETALLE DE ENTREGA =====");
+            Console.WriteLine($"Fecha Solicitud: {FechaSolicitud}");
+            Console.WriteLine($"Cliente: {Cliente.NombreCompleto}");
+            Console.WriteLine($"Paquete: {Paquete.Codigo} - {Paquete.Descripcion}");
+            Console.WriteLine($"Repartidor: {Repartidor.NombreCompleto}");
+            Console.WriteLine($"Vehículo: {Vehiculo.TipoVehiculo} [{Vehiculo.Marca}]");
+            Console.WriteLine($"Distancia: {Distancia} km");
+            Console.WriteLine($"Tipo de Servicio: {TipoServicio}");
+            Console.WriteLine($"Estado de Entrega: {Estado}");
+            Console.WriteLine($"Tarifa Base: Q{TarifaBase}");
+            Console.WriteLine($"Recargos: Q{Recargos}");
+            Console.WriteLine($"Total a Pagar: Q{Total}"); 
+            Console.ResetColor();
+        }
+
     }
 }

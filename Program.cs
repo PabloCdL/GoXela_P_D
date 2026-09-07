@@ -18,6 +18,7 @@ namespace GoXela_P__D
             List<Motocicleta> listaMotocicleta = new List<Motocicleta>();
             List<Bicicleta> listaBicicleta = new List<Bicicleta>();
             List<Paquete> listaPaquetes = new List<Paquete>();
+            List<Entregas> listaEntregas = new List<Entregas>();
             do
             {            
                 Console.WriteLine($"=========================");
@@ -1024,7 +1025,7 @@ namespace GoXela_P__D
 
                                             if (posModificar != -1)
                                             {
-                                                Console.WriteLine("\nVehículo encontrado. Ingrese los nuevos datos:");
+                                                Console.WriteLine($"Vehículo encontrado. Ingrese los nuevos datos:");
 
                                                 string codigoN;
                                                 string marcaN;
@@ -1138,7 +1139,7 @@ namespace GoXela_P__D
                                                         Console.WriteLine($"Vehículo actualizado a Motocicleta exitosamente");
                                                         break;
                                                     }
-                                                    else if (tipoVehiculo == "3") // BICICLETA
+                                                    else if (tipoVehiculo == "3")
                                                     {
                                                         costoN = 10.0;
                                                        
@@ -1666,9 +1667,8 @@ namespace GoXela_P__D
                                 Console.WriteLine($"1. Nueva Entrega");
                                 Console.WriteLine($"2. Mostrar Entregas");
                                 Console.WriteLine($"3. Buscar Entrega");
-                                Console.WriteLine($"4. Tiempo");
-                                Console.WriteLine($"5. Borrar Entrega");
-                                Console.WriteLine($"6. Salir");
+                                Console.WriteLine($"4. Borrar Entrega");
+                                Console.WriteLine($"5. Salir");
 
                                 if (!int.TryParse(Console.ReadLine(), out op5))
                                 {
@@ -1679,22 +1679,35 @@ namespace GoXela_P__D
                                     switch (op5)
                                     {
                                         case 1:
+                                            VerificarEntrega.RegistrarNuevaEntrega(
+                                listaClientes,
+                                listaPaquetes,
+                                listaRepartidores,
+                                listaVehiculos,
+                                listaEntregas
+                            );                                            
                                             break;
                                         case 2:
+                                            VerificarEntrega.MostrarTodasLasEntregas(listaEntregas);
+                                            Console.ReadKey();
                                             break;
                                         case 3:
+                                            VerificarEntrega.BuscarEntrega(listaEntregas);
+                                            Console.ReadKey();
                                             break;
                                         case 4:
+                                            VerificarEntrega.BorrarEntrega(listaEntregas);
+                                            Console.ReadKey();
                                             break;
                                         case 5:
-                                            break;
-                                        case 6:
+                                            Console.WriteLine($"Saliendo...");
                                             break;
                                         default:
+                                            Console.WriteLine($"Opcion no valida");
                                             break;
                                     }
                                 }
-                            } while (op5 != 6);
+                            } while (op5 != 5);
                             break;
                         case 6:
                             //Incidencias
